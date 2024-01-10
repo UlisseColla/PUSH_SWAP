@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 
 	a = ft_create_list(argc, argv);
 	b = NULL;
-	
+
 	push_b(&b, &a);
 	push_b(&b, &a);
 	push_b(&b, &a);
