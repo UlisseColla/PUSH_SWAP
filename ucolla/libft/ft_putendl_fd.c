@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:40:39 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:05:25 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/13 17:13:32 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/14 13:54:31 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "libft.h"
 
-void	push_a(t_stack **stack, t_stack **node)
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_stack	*tmp_node;
+	size_t	len;
 
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **stack, t_stack **node)
-{
-	t_stack	*tmp_node;
-
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pb\n");
+	len = ft_strlen(s);
+	write(fd, s, len);
+	write(fd, "\n", 1);
 }

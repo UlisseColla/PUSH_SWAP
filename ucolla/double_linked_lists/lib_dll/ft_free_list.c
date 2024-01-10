@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   ft_free_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:40:39 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:05:25 by ucolla           ###   ########.fr       */
+/*   Created: 2024/01/09 11:52:08 by ucolla            #+#    #+#             */
+/*   Updated: 2024/01/10 16:09:27 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "../push_swap_dll.h"
 
-void	push_a(t_stack **stack, t_stack **node)
+void	ft_free_list(t_stack *list)
 {
-	t_stack	*tmp_node;
+	t_stack	*tmp;
 
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **stack, t_stack **node)
-{
-	t_stack	*tmp_node;
-
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pb\n");
+	while (list)
+	{
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
 }

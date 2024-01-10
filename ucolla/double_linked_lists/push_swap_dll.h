@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/09 18:23:30 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/10 19:02:41 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,18 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+# include <stdbool.h>
 
 typedef struct t_double_node
 {
 	int						value;
+	int						index;
+	bool					has_index;
 	struct t_double_node	*next;
 	struct t_double_node	*prev;
 }	t_stack;
 
-/* Funzioni base */
+/* Funzioni base --> lib_dll */
 t_stack	*ft_create_node(int value);
 t_stack	*ft_create_list(int argc, char **argv);
 t_stack	*ft_list_last(t_stack *list);
@@ -63,5 +66,10 @@ void	rrr(t_stack **stack_a, t_stack **stack_b);
 int		find_smallest(t_stack **stack);
 int		find_biggest(t_stack **stack);
 int		check_order(t_stack *stack);
+void	index_stack_init(t_stack **stack);
+
+/* --- Sorting --- */
+
+void	ft_sort_three(t_stack **stack);
 
 #endif

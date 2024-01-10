@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:40:39 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:05:25 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/14 11:08:39 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/17 14:26:08 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "libft.h"
 
-void	push_a(t_stack **stack, t_stack **node)
+char	*ft_strdup(const char *s)
 {
-	t_stack	*tmp_node;
+	char	*str;
+	size_t	i;
 
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **stack, t_stack **node)
-{
-	t_stack	*tmp_node;
-
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pb\n");
+	str = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!str)
+	{
+		free(str);
+		return (NULL);
+	}
+	i = 0;
+	while (s[i] != '\0')
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 19:01:39 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/10 17:10:37 by ucolla            #+#    #+#             */
+/*   Updated: 2023/11/30 10:50:38 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_atoi(const char *nptr)
 {
-	t_stack *a;
-	t_stack *b;
+	int			counter_minus;
+	int			i;
+	long int	c;
 
-	a = ft_create_list(argc, argv);
-	b = NULL;
-	
-	// push_b(&b, &a);
-	index_stack_init(&a);
-	ft_sort_three(&a);
-	ft_printf("\n");
-	while (a)
+	counter_minus = 0;
+	i = 0;
+	c = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-')
 	{
-		printf("a: %d, index: %d, has_index: %d\n", a->value, a->index, a->has_index);
-		a = a->next;
+		counter_minus++;
+		i++;
 	}
-	write(1, "\n", 1);
-	while (b)
+	else if (nptr[i] == '+')
+		i++;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		printf("b: %d\n", b->value);
-		b = b->next;
+		c = (c * 10) + (nptr[i] - '0');
+		i++;
 	}
-	return (0);
+	if (counter_minus == 1)
+		c = -c;
+	return (c);
 }
-	

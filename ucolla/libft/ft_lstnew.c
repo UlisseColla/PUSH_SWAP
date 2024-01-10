@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:40:39 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:05:25 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/19 17:30:02 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/19 17:40:34 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "libft.h"
 
-void	push_a(t_stack **stack, t_stack **node)
+t_list	*ft_lstnew(void *content)
 {
-	t_stack	*tmp_node;
+	t_list	*new;
 
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **stack, t_stack **node)
-{
-	t_stack	*tmp_node;
-
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pb\n");
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = (void *)content;
+	new->next = NULL;
+	return (new);
 }

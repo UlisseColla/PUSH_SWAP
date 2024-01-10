@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 19:01:39 by ucolla           ###   ########.fr       */
+/*   Created: 2023/11/05 11:31:05 by ucolla            #+#    #+#             */
+/*   Updated: 2023/11/05 14:47:47 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "ft_printf.h"
 
-int main(int argc, char **argv)
+int	ft_putptr(uintptr_t ptr, char *base)
 {
-	t_stack *a;
-	t_stack *b;
+	int				k;
+	int				l;
+	int				ptr_to_print[20];
 
-	a = ft_create_list(argc, argv);
-	b = NULL;
-	
-	// push_b(&b, &a);
-	index_stack_init(&a);
-	ft_sort_three(&a);
-	ft_printf("\n");
-	while (a)
+	k = 0;
+	if (!ptr)
 	{
-		printf("a: %d, index: %d, has_index: %d\n", a->value, a->index, a->has_index);
-		a = a->next;
+		write(1, "(nil)", 5);
+		return (5);
 	}
-	write(1, "\n", 1);
-	while (b)
+	while (ptr)
 	{
-		printf("b: %d\n", b->value);
-		b = b->next;
+		ptr_to_print[k] = ptr % 16;
+		ptr /= 16;
+		k++;
 	}
-	return (0);
+	l = k;
+	write(1, "0x", 2);
+	while (--k >= 0)
+		ft_putchar(base[ptr_to_print[k]]);
+	return (l + 2);
 }
-	
+/* int main()
+{
+	ft_putptr(0, "0123456789abcdef");
+	printf("\n");
+	printf("%p\n", 0);
+} */
