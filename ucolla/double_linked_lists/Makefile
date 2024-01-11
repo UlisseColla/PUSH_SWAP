@@ -27,6 +27,7 @@ FUNCTIONS_LIST:= lib_dll/ft_create_list \
 				push_swap_utils \
 				index_stack \
 				ft_sort_three \
+				ft_sort_five \
 				main \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FUNCTIONS_LIST))

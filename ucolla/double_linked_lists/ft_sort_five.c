@@ -1,41 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_sort_five.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 19:35:52 by ucolla           ###   ########.fr       */
+/*   Created: 2024/01/10 19:19:44 by ucolla            #+#    #+#             */
+/*   Updated: 2024/01/10 19:36:58 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_dll.h"
 
-int main(int argc, char **argv)
+static void	push_biggest(t_stack **stack_a, t_stack **stack_b)
 {
+	int	i;
 	t_stack *a;
 	t_stack *b;
 
-	a = ft_create_list(argc, argv);
-	b = NULL;
-	
-	// push_b(&b, &a);
-	// index_stack_init(&a);
-	// ft_sort_three(&a);
-	// ft_printf("Lunghezza lista: %d\n", ft_list_size(a));
-	ft_sort_five(&a, &b);
+	i = 0;
+	a = *stack_a;
 	while (a)
 	{
-		printf("a: %d, index: %d, has_index: %d\n", a->value, a->index, a->has_index);
+		b = *stack_a;
+		if (a->value == find_biggest(&b))
+			break ;
 		a = a->next;
+		i++;
 	}
-	write(1, "\n", 1);
-	while (b)
+	if (i <= 2)
 	{
-		printf("b: %d\n", b->value);
-		b = b->next;
+		while (i > 0)
+		{
+			rotate_a(stack_a);
+			i--;
+		}
 	}
-	return (0);
+	else
+	{
+		while (i <= 5)
+		{
+			reverse_rotate_a(stack_a);
+			i++;
+		}
+	}
+	push_b(stack_b, stack_a);
 }
-	
+
+void	ft_sort_five(t_stack **stack_a, t_stack **stack_b)
+{
+	push_biggest(stack_a, stack_b);
+}
