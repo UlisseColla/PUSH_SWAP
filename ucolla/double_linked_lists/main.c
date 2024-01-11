@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/09 18:24:20 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/11 14:46:19 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 
 	a = ft_create_list(argc, argv);
 	b = NULL;
-
+/*
 	push_b(&b, &a);
 	push_b(&b, &a);
 	push_b(&b, &a);
@@ -30,10 +30,10 @@ int main(int argc, char **argv)
 	
 	reverse_rotate_a(&a);
 	reverse_rotate_b(&b);
-
+*/
 	while (a)
 	{
-		printf("a: %d\n", a->value);
+		printf("a: %d, index: %d, has_index: %d\n", a->value, a->index, a->has_index);
 		a = a->next;
 	}
 	write(1, "\n", 1);

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:40:39 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:05:25 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/16 14:58:30 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/16 15:00:12 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "libft.h"
 
-void	push_a(t_stack **stack, t_stack **node)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_stack	*tmp_node;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **stack, t_stack **node)
-{
-	t_stack	*tmp_node;
-
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pb\n");
+	i = 0;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	if (!str1 && !str2)
+		return (0);
+	while (str1 && str2 && i < n)
+	{
+		if ((str1)[i] != (str2)[i])
+			return ((str1)[i] - (str2)[i]);
+		i++;
+	}
+	return (0);
 }

@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:40:39 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:05:25 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/10 12:13:49 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/26 10:44:16 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "libft.h"
 
-void	push_a(t_stack **stack, t_stack **node)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	t_stack	*tmp_node;
+	size_t			i;
+	unsigned char	*str;
 
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pa\n");
+	i = 0;
+	str = (unsigned char *)s;
+	while (i < n)
+	{
+		str[i] = c;
+		i++;
+	}
+	return (str);
 }
 
-void	push_b(t_stack **stack, t_stack **node)
+/*int main()
 {
-	t_stack	*tmp_node;
-
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pb\n");
-}
+	char str[6];
+	ft_memset(str, 'A', 5);
+	printf("%s\n", str);
+	return (0);
+}*/

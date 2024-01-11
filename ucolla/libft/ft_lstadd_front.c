@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:40:39 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:05:25 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/19 17:41:28 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/20 17:57:45 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "libft.h"
 
-void	push_a(t_stack **stack, t_stack **node)
+void	ft_lstadd_front(t_list **lst, t_list *nw)
 {
-	t_stack	*tmp_node;
-
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pa\n");
+	if (!nw)
+		return ;
+	nw->next = *lst;
+	*lst = nw;
 }
 
-void	push_b(t_stack **stack, t_stack **node)
+/*int main()
 {
-	t_stack	*tmp_node;
+	t_list *lst;
+	t_list *nw;
 
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pb\n");
-}
+	lst = ft_lstnew("Hello");
+	nw = ft_lstnew("World");
+	ft_lstadd_front(&lst, nw);
+	printf("%s\n", (char *)lst->content);
+	printf("%s\n", (char *)lst->next->content);
+	return (0);
+}*/

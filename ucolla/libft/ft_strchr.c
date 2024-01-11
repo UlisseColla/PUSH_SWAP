@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:40:39 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:05:25 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/10 15:12:44 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/16 17:44:17 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "libft.h"
 
-void	push_a(t_stack **stack, t_stack **node)
+char	*ft_strchr(const char *s, int c)
 {
-	t_stack	*tmp_node;
+	unsigned char	a;
+	size_t			i;
+	char			*str;
 
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **stack, t_stack **node)
-{
-	t_stack	*tmp_node;
-
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pb\n");
+	a = c;
+	i = 0;
+	str = (char *)s;
+	if (!str)
+		return (NULL);
+	if (a == '\0')
+		return (str + ft_strlen(s));
+	while (str[i] != '\0')
+	{
+		if (str[i] == a)
+			return (&str[i]);
+		i++;
+	}
+	return (NULL);
 }

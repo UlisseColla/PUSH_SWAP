@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:40:39 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:05:25 by ucolla           ###   ########.fr       */
+/*   Created: 2023/05/27 21:34:33 by ucolla            #+#    #+#             */
+/*   Updated: 2023/11/05 15:25:13 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "ft_printf.h"
 
-void	push_a(t_stack **stack, t_stack **node)
+int	ft_putnbr_base(unsigned int nbr, char *base)
 {
-	t_stack	*tmp_node;
+	int				k;
+	int				l;
+	int				nbr_to_print[20];
 
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **stack, t_stack **node)
-{
-	t_stack	*tmp_node;
-
-	tmp_node = (*node)->next;
-	ft_list_addfront(stack, *node);
-	*node = tmp_node;
-	ft_printf("pb\n");
+	k = 0;
+	if (nbr == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
+	while (nbr)
+	{
+		nbr_to_print[k] = nbr % 16;
+		nbr /= 16;
+		k++;
+	}
+	l = k;
+	while (--k >= 0)
+		ft_putchar(base[nbr_to_print[k]]);
+	return (l);
 }
