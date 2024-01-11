@@ -6,7 +6,11 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/01/11 14:46:19 by aconciar         ###   ########.fr       */
+=======
+/*   Updated: 2024/01/10 19:35:52 by ucolla           ###   ########.fr       */
+>>>>>>> f65d8b8d2ca0f7e21b7c04e456972d3f78c3dde7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +23,7 @@ int main(int argc, char **argv)
 
 	a = ft_create_list(argc, argv);
 	b = NULL;
-/*
-	push_b(&b, &a);
-	push_b(&b, &a);
-	push_b(&b, &a);
-	push_b(&b, &a);
 
-	swap_b(&b);
-	swap_a(&a);
-	
-	reverse_rotate_a(&a);
-	reverse_rotate_b(&b);
-*/
 	while (a)
 	{
 		printf("a: %d, index: %d, has_index: %d\n", a->value, a->index, a->has_index);

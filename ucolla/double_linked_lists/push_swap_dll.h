@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 19:02:41 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/10 19:36:12 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void	index_stack_init(t_stack **stack);
 /* --- Sorting --- */
 
 void	ft_sort_three(t_stack **stack);
+void	ft_sort_five(t_stack **stack_a, t_stack **stack_b);
 
 #endif
