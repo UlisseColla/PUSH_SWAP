@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:33 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/11 16:27:01 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/12 18:58:05 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,24 @@ int	find_biggest(t_stack **stack)
 		if (current_value > max_value)
 			max_value = current_value;
 		tmp = tmp->next;
+	}
+	return (max_value);
+}
+
+int	arr_find_biggest(int *array)
+{
+	int		max_value;
+	int		current_value;
+	int		i;
+
+	max_value = INT_MIN;
+	i = 0;
+	while (array[i])
+	{
+		current_value = array[i];
+		if (current_value > max_value)
+			max_value = current_value;
+		i++;
 	}
 	return (max_value);
 }

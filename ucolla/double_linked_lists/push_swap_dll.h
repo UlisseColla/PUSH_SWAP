@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/12 12:12:01 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/12 18:58:23 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_DLL_H
 
 # include "../libft/libft.h"
+# include "../libft/get_next_line/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -71,6 +72,7 @@ void	show_stack(t_stack **stack);
 void	push_biggest(t_stack **stack_a, t_stack **stack_b);
 int		check_input(char *str);
 void	free_mat(char **mat);
+int	arr_find_biggest(int *array);
 
 /* --- Sorting --- */
 
