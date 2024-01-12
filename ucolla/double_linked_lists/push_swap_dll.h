@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 19:36:12 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/12 12:12:01 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct t_double_node
 
 /* Funzioni base --> lib_dll */
 t_stack	*ft_create_node(int value);
-t_stack	*ft_create_list(int argc, char **argv);
+t_stack	*ft_create_list(char *str_args);
 t_stack	*ft_list_last(t_stack *list);
 void	ft_free_list(t_stack *list);
 void	ft_list_addfront(t_stack **list, t_stack *new);
@@ -67,6 +67,10 @@ int		find_smallest(t_stack **stack);
 int		find_biggest(t_stack **stack);
 int		check_order(t_stack *stack);
 void	index_stack_init(t_stack **stack);
+void	show_stack(t_stack **stack);
+void	push_biggest(t_stack **stack_a, t_stack **stack_b);
+int		check_input(char *str);
+void	free_mat(char **mat);
 
 /* --- Sorting --- */
 

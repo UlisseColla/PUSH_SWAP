@@ -6,13 +6,13 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:44 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 19:36:58 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/11 17:02:18 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_dll.h"
 
-static void	push_biggest(t_stack **stack_a, t_stack **stack_b)
+void	push_biggest(t_stack **stack_a, t_stack **stack_b)
 {
 	int	i;
 	t_stack *a;
@@ -28,21 +28,15 @@ static void	push_biggest(t_stack **stack_a, t_stack **stack_b)
 		a = a->next;
 		i++;
 	}
-	if (i <= 2)
+	if (i <= ft_list_size(*stack_a) / 2)
 	{
-		while (i > 0)
-		{
+		while (--i >= 0)
 			rotate_a(stack_a);
-			i--;
-		}
 	}
 	else
 	{
-		while (i <= 5)
-		{
+		while (++i <= ft_list_size(*stack_a))
 			reverse_rotate_a(stack_a);
-			i++;
-		}
 	}
 	push_b(stack_b, stack_a);
 }
@@ -50,4 +44,11 @@ static void	push_biggest(t_stack **stack_a, t_stack **stack_b)
 void	ft_sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	push_biggest(stack_a, stack_b);
+	push_biggest(stack_a, stack_b);
+	ft_sort_three(stack_a);
+	swap_b(stack_b);
+	push_a(stack_a, stack_b);
+	push_a(stack_a, stack_b);
+	rotate_a(stack_a);
+	rotate_a(stack_a);
 }

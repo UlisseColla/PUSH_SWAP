@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:33 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/09 14:33:27 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/11 16:27:01 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,19 @@ int	check_order(t_stack *stack)
 	if (stack->value > stack->prev->value)
 		return (1);
 	return (0);
+}
+
+void	show_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (!(*stack))
+		ft_printf("Empty stack\n\n");
+	tmp = *stack;
+	while (tmp)
+	{
+		printf("stack: %d, index: %d\n", tmp->value, tmp->index);
+		tmp = tmp->next;
+	}
+	ft_printf("\n");
 }

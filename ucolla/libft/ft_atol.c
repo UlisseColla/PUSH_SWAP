@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_list.c                                   :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:51:04 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/12 12:12:25 by ucolla           ###   ########.fr       */
+/*   Created: 2024/01/12 11:33:57 by ucolla            #+#    #+#             */
+/*   Updated: 2024/01/12 11:34:34 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "libft.h"
 
-t_stack	*ft_create_list(char *str_args)
+long int	ft_atol(const char *nptr)
 {
-	t_stack	*list;
-	t_stack	*new;
-	int		i;
-	char	**args;
+	int				counter_minus;
+	int				i;
+	long long int	c;
 
-	list = NULL;
+	counter_minus = 0;
 	i = 0;
-	args = ft_split(str_args, ' ');
-	while (args[i])
+	c = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-')
 	{
-		new = ft_create_node(ft_atoi(args[i]));
-		if (new == NULL)
-		{
-			ft_free_list(list);
-			return (NULL);
-		}
-		ft_list_addback(&list, new);
+		counter_minus++;
 		i++;
 	}
-	return (list);
+	else if (nptr[i] == '+')
+		i++;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		c = (c * 10) + (nptr[i] - '0');
+		i++;
+	}
+	if (counter_minus == 1)
+		c = -c;
+	return (c);
 }

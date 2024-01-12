@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 19:35:52 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/12 12:14:30 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,19 @@ int main(int argc, char **argv)
 	t_stack *a;
 	t_stack *b;
 
-	a = ft_create_list(argc, argv);
+	if (argc < 1 || check_input(argv[1]) == 1)
+	{
+		ft_putstr_fd("Wrong set of parameters\n", 2);
+		return (1);
+	}
+	else
+		a = ft_create_list(argv[1]);
 	b = NULL;
 	
-	// push_b(&b, &a);
-	// index_stack_init(&a);
-	// ft_sort_three(&a);
-	// ft_printf("Lunghezza lista: %d\n", ft_list_size(a));
-	ft_sort_five(&a, &b);
-	while (a)
-	{
-		printf("a: %d, index: %d, has_index: %d\n", a->value, a->index, a->has_index);
-		a = a->next;
-	}
-	write(1, "\n", 1);
-	while (b)
-	{
-		printf("b: %d\n", b->value);
-		b = b->next;
-	}
-	return (0);
+	index_stack_init(&a);
+	show_stack(&a);
+	show_stack(&b);
+
+	return (0);	
 }
 	
