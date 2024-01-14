@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/12 18:58:23 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/14 16:22:59 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,9 @@ int	arr_find_biggest(int *array);
 
 void	ft_sort_three(t_stack **stack);
 void	ft_sort_five(t_stack **stack_a, t_stack **stack_b);
+
+int	*find_longest_path(int *args, int num);
+int	find_next_smaller(int *args, int num, int index);
+int	*create_array(t_stack *stack);
 
 #endif

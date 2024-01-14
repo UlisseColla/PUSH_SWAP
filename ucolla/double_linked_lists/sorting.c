@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:22:11 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/12 19:12:22 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/14 19:14:05 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,53 +28,112 @@
 		c. alla fine calcolare quale array e' il piu' lungo e ritornarlo
 */
 
+int	find_index(int *args, int num)
+{
+	int	i;
+
+	i = 0;
+	while (args[i] && args[i] != num)
+		i++;
+	return (i);
+}
+
 /* Creazione di array degli int passati come argomento a push_swap */
 int	*create_array(t_stack *stack)
 {
-	int		*array;
-	int		i;
+	long int		*array;
+	int				i;
 	t_stack	*tmp;
 
-	array = (int *)malloc(sizeof(int) * ft_list_size(stack));
+	array = (long int *)malloc(sizeof(long int) * (long)(ft_list_size(stack) + 1));
 	i = 0;
 	tmp = stack;
 	while (tmp)
 	{
 		array[i] = tmp->index;
 		i++;
-		tmp = tmp->next
+		tmp = tmp->next;
 	}
+	array[i] = 2147483648;
 	return (array);
 }
 
-/* Funzione per trovare la sequenza piu' lunga */
-int	*find_longest_path(int *args)
+/* Parametri sono array e indice e numero da cui partire */
+/* All'inizio args[index] = num */
+int	find_next_smaller(int *args, int num, int index)
 {
-	int		i;
-	int		j;
+	int	j;
+	int	tmp;
 
-	i = arr_find_biggest(args);
-	j = i;
+	tmp = num - 1;
+	while (tmp > 0)
+	{
+		j = index;
+		while (args[j] && j >= 0)
+		{
+			if (args[j] == tmp)
+				return (args[j]);
+			j--;
+		}
+		tmp--;
+	}
+	return (num);
+}
+
+/* Funzione per trovare la sequenza piu' lunga. Parametro args = create_array() */
+/* Parametro num e' il numero dal quale partire a fare la ricerca a ritroso (ordine decrescente) */
+/* Se ho troppi linee passare i direttamente come argomento della funzione */
+int	*find_longest_path(int *args, int num)
+{
+	int	i;
+	int	j;
+	int	k;
+	int	tmp;
+	int	*ret;	
+
+	i = 1;
+	j = find_index(args, num);
+	k = j;
+	tmp = num;
+	while (find_next_smaller(args, tmp, j) != tmp)
+	{
+		i++;
+		tmp = find_next_smaller(args, tmp, j);
+		j = find_index(args, tmp);
+	}
+	ret = (long int *)malloc(sizeof(long int) * i);
+	ret[i] = 2147483648;
 	while (i > 0)
 	{
-		
+		ret[i - 1] = num;
+		i--;
+		num = find_next_smaller(args, num, k);
+		k = find_index(args, num);
 	}
+	return (ret);
+}
+
+/* !!! RIVEDERE PER BENE TUTTI I CAST A LONG !!! */
+
+// int	*ret_longest_array(int *array)
+// {
+// 	int	i;
+// 	int	**matrix;
+// 	int	l;
+
+// 	i = 0;
+// 	while (array[i] != INT_MAX + 1)
+// 		i++;
+// 	matrix = (int **)malloc(sizeof(int *) * i);
+// 	while (--i >= 0)
+// 	{
+// 		/* Funzione per trovare la sequenza piu' lunga */
+// 		matrix[i] = find_longest_path(array, array[i]);
+// 		while (l > 0)
+// 		{
+// 			printf("Matrix[i]: %d\n", matrix[i][l]);
+// 			l--;
+// 		}
+// 	}
 	
-}
-
-int	*ret_longest_array(t_stack *stack)
-{
-	t_stack	*tmp;
-	int	i;
-	int	**matrix;
-
-	tmp = ft_list_last(stack);
-	i = ft_list_size(stack);
-	matrix = (int *)malloc(sizeof(int *) * i);
-	while (--i >= 0)
-	{
-		/* Funzione per trovare la sequenza piu' lunga */
-		tmp = tmp->prev;
-	}
-	/* Funzione per trovare l'array piu' lungo */
-}
+// }
