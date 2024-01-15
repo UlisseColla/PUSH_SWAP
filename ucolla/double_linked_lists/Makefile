@@ -20,15 +20,15 @@ FUNCTIONS_LIST:= lib_dll/ft_create_list \
 				lib_dll/ft_list_addback \
 				lib_dll/ft_list_addfront \
 				lib_dll/ft_list_find_node \
-				op_rev_rotate \
-				op_rotate \
-				op_swap_and_push \
+				operations/op_rev_rotate \
+				operations/op_rotate \
+				operations/op_swap_and_push \
+				sorting_fts/ft_sort_three \
+				sorting_fts/ft_sort_five \
+				sorting_fts/sorting \
 				push_swap_utils \
 				index_stack \
-				ft_sort_three \
-				ft_sort_five \
 				check_input \
-				sorting \
 				main \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FUNCTIONS_LIST))

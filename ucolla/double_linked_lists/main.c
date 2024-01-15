@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/15 17:38:12 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/15 18:07:58 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int main(int argc, char **argv)
 	i = 0;
 	index_stack_init(&a);
 	path = ret_longest_array(create_array(a));
+	index_push_init(a, path);
 	while (path[i] != (long)INT_MAX + 1)
 	{
 		printf("path index: %ld\n", path[i]);

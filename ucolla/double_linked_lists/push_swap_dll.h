@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/15 17:36:06 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/15 18:26:26 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct t_double_node
 {
 	int						value;
 	int						index;
+	long					cost;
 	bool					has_index;
 	bool					push;
 	struct t_double_node	*next;
@@ -69,6 +70,7 @@ int		find_smallest(t_stack **stack);
 int		find_biggest(t_stack **stack);
 int		check_order(t_stack *stack);
 void	index_stack_init(t_stack **stack);
+void	index_push_init(t_stack *stack, long *path);
 void	show_stack(t_stack **stack);
 void	push_biggest(t_stack **stack_a, t_stack **stack_b);
 int		check_input(char *str);

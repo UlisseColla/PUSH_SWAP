@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:26:15 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 18:55:10 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/15 18:08:25 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,26 @@ void	index_stack_init(t_stack **stack)
 		ft_list_find_node(b, smallest)->has_index = true;
 		a = a->next;
 		i++;
+	}
+}
+
+void	index_push_init(t_stack *stack, long *path)
+{
+	t_stack	*tmp;
+	int		i;
+	
+	tmp = stack;
+	i = 0;
+	while (tmp)
+	{
+		i = 0;
+		tmp->push = true;
+		while (path[i] != (long)INT_MAX + 1)
+		{
+			if (path[i] == tmp->index)
+				tmp->push = false;
+			i++;
+		}
+		tmp = tmp->next;
 	}
 }

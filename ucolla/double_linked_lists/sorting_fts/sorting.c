@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:22:11 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/15 17:41:13 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:54:17 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 		b. partire dal numero piu' grande al piu' piccolo e calcolare per ognuno
 		la lista piu' lunga possibile fino al piu' piccolo
 		c. alla fine calcolare quale array e' il piu' lungo e ritornarlo
+
+	Due logiche diverse di ricerca della sequenza di indici gia' in ordine:
+	
+	I. find_next_smaller() parte dall'indice index passato come argomento e procede cercando
+		index--;
+	II. ft_smaller() parte dall'indice index passato come argomento e procede cercando il 
+		prossimo numero piu' piccolo, non importa quanto piu' piccolo.
 */
 
 long	find_index(long *args, long num)
@@ -56,6 +63,18 @@ long	*create_array(t_stack *stack)
 	}
 	array[i] = (long)INT_MAX + 1;
 	return (array);
+}
+
+/* Trova il prossimo numero piu' piccolo */
+long	ft_smaller(long *args, long num, long index)
+{
+	while (index >= 0)
+	{
+		if (args[index] < num)
+			return (args[index]);
+		index--;
+	}
+	return (num);
 }
 
 /* Parametri sono array e indice e numero da cui partire */
@@ -93,10 +112,10 @@ long	*find_longest_path(long *args, long num, long i)
 	j = find_index(args, num);
 	k = j;
 	tmp = num;
-	while (find_next_smaller(args, tmp, j) != tmp)
+	while (ft_smaller(args, tmp, j) != tmp)
 	{
 		i++;
-		tmp = find_next_smaller(args, tmp, j);
+		tmp = ft_smaller(args, tmp, j);
 		j = find_index(args, tmp);
 	}
 	ret = (long *)malloc(sizeof(long) * i + 1);
@@ -105,12 +124,10 @@ long	*find_longest_path(long *args, long num, long i)
 	while (i >= 0)
 	{
 		ret[i] = num;
-		printf("trovo sequenza: %ld\n", ret[i]);
 		i--;
-		num = find_next_smaller(args, num, k);
+		num = ft_smaller(args, num, k);
 		k = find_index(args, num);
 	}
-	printf("<--->\n");
 	return (ret);
 }
 
