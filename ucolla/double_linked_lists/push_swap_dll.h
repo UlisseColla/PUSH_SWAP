@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/14 16:22:59 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:36:06 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct t_double_node
 	int						value;
 	int						index;
 	bool					has_index;
+	bool					push;
 	struct t_double_node	*next;
 	struct t_double_node	*prev;
 }	t_stack;
@@ -34,10 +35,10 @@ typedef struct t_double_node
 t_stack	*ft_create_node(int value);
 t_stack	*ft_create_list(char *str_args);
 t_stack	*ft_list_last(t_stack *list);
+t_stack	*ft_list_find_node(t_stack *list, int value);
 void	ft_free_list(t_stack *list);
 void	ft_list_addfront(t_stack **list, t_stack *new);
 void	ft_list_addback(t_stack **list, t_stack *new);
-t_stack	*ft_list_find_node(t_stack *list, int value);
 int		ft_list_size(t_stack *list);
 
 /* --- Operazioni --- */
@@ -72,15 +73,19 @@ void	show_stack(t_stack **stack);
 void	push_biggest(t_stack **stack_a, t_stack **stack_b);
 int		check_input(char *str);
 void	free_mat(char **mat);
-int	arr_find_biggest(int *array);
+int		arr_find_biggest(int *array);
 
 /* --- Sorting --- */
-
 void	ft_sort_three(t_stack **stack);
 void	ft_sort_five(t_stack **stack_a, t_stack **stack_b);
 
-int	*find_longest_path(int *args, int num);
-int	find_next_smaller(int *args, int num, int index);
-int	*create_array(t_stack *stack);
+/* Trova sequenza piu' lunga */
+long	find_index(long *args, long num);
+long	*find_longest_path(long *args, long num, long i);
+long	find_next_smaller(long *args, long num, long index);
+long	*create_array(t_stack *stack);
+long	*ret_longest_array(long *array);
+long	array_size(long *array);
+void	free_mat_long(long **mat);
 
 #endif

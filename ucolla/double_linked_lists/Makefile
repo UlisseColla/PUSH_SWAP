@@ -46,6 +46,9 @@ $(NAME): $(FUNCTIONS_OBJ)
 	$(MAKE) -C $(PATH_PRINTF)
 	$(CC) $(FLAGS) $(FUNCTIONS_OBJ) $(PATH_LIBFT)/$(LIBFT) $(PATH_GNL)/$(GNL) $(PATH_PRINTF)/$(FT_PRINTF) -o $(NAME)
 	
+valgrind: $(NAME)
+	valgrind --track-origins=yes --leak-check=full ./$(NAME)
+
 clean:
 	$(MAKE) clean -C $(PATH_LIBFT)
 	$(MAKE) clean -C $(PATH_GNL)

@@ -6,17 +6,20 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/14 19:09:27 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:38:12 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_dll.h"
 
-/* int main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	t_stack *a;
 	t_stack *b;
+	long	*path;
+	int 	i;
 
+	// Primo check dei parametri
 	int file = open("ARGS", O_RDONLY, 0666);
 	(void)argv;
 	if (check_input(get_next_line(file)) == 1 || argc < 0)
@@ -30,34 +33,32 @@
 		a = ft_create_list(get_next_line(file));
 	}
 	b = NULL;
-	
+	i = 0;
 	index_stack_init(&a);
-	
-	int *b = ret_longest_array()
-	while (b[i])
+	path = ret_longest_array(create_array(a));
+	while (path[i] != (long)INT_MAX + 1)
 	{
-		printf("array: %d\n", b[i]);
+		printf("path index: %ld\n", path[i]);
 		i++;
 	}
 	show_stack(&a);
-	show_stack(&c);
 
 	return (0);	
-} */
+}
 
-int main(void)
+/* int main(void)
 {
-	// int a[] = {1, 5, 7, 3, 9, 2, 16, 15, 58};
-	int array[] = {86, 977, 475, 903, 680, 621, 885, 62, 54, 454, 510, 7, 669, 817, 103, 326, 460, 476, 133, 928};
+	long array[] = {23, 7, 32, 30, 6, 17, 31, 19, 22, 18, 8, 36, 12, 34, 28, 37, 38, 29, 33, 9, 10, 13, 27, 39, 1, 25, 40, 21, 24, 15, 20, 14, 16, 2, 3, 11, 5, 35, 4, 26, (long)INT_MAX + 1};
 
-
-	int *b = find_longest_path(array, 669);
-
-	// printf("array: %d\n", b[i]);
-	while (b[i] != 2147483648)
+	long *b;
+	b = NULL;
+	b = ret_longest_array(array);
+	int i = 0;
+	while (b[i] != (long)INT_MAX + 1)
 	{
-		printf("b: %d\n", b[i]);
+		printf("b: %ld\n", b[i]);
 		i++;
 	}
-	// printf("i: %d\n", length);
-}
+	free(b);
+	b = NULL;
+} */

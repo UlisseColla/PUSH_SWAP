@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:22:11 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/14 19:14:05 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:41:13 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 		c. alla fine calcolare quale array e' il piu' lungo e ritornarlo
 */
 
-int	find_index(int *args, int num)
+long	find_index(long *args, long num)
 {
-	int	i;
+	long	i;
 
 	i = 0;
 	while (args[i] && args[i] != num)
@@ -39,32 +39,33 @@ int	find_index(int *args, int num)
 }
 
 /* Creazione di array degli int passati come argomento a push_swap */
-int	*create_array(t_stack *stack)
+long	*create_array(t_stack *stack)
 {
-	long int		*array;
-	int				i;
+	long	*array;
+	int		i;
 	t_stack	*tmp;
 
-	array = (long int *)malloc(sizeof(long int) * (long)(ft_list_size(stack) + 1));
+	array = (long *)malloc(sizeof(long) * (long)(ft_list_size(stack) + 1));
 	i = 0;
 	tmp = stack;
 	while (tmp)
 	{
-		array[i] = tmp->index;
+		array[i] = (long)tmp->index;
 		i++;
 		tmp = tmp->next;
 	}
-	array[i] = 2147483648;
+	array[i] = (long)INT_MAX + 1;
 	return (array);
 }
 
 /* Parametri sono array e indice e numero da cui partire */
 /* All'inizio args[index] = num */
-int	find_next_smaller(int *args, int num, int index)
+long	find_next_smaller(long *args, long num, long index)
 {
-	int	j;
-	int	tmp;
+	long	j;
+	long	tmp;
 
+	j = 0;
 	tmp = num - 1;
 	while (tmp > 0)
 	{
@@ -82,16 +83,13 @@ int	find_next_smaller(int *args, int num, int index)
 
 /* Funzione per trovare la sequenza piu' lunga. Parametro args = create_array() */
 /* Parametro num e' il numero dal quale partire a fare la ricerca a ritroso (ordine decrescente) */
-/* Se ho troppi linee passare i direttamente come argomento della funzione */
-int	*find_longest_path(int *args, int num)
+long	*find_longest_path(long *args, long num, long i)
 {
-	int	i;
-	int	j;
-	int	k;
-	int	tmp;
-	int	*ret;	
+	long	j;
+	long	k;
+	long	tmp;
+	long	*ret;	
 
-	i = 1;
 	j = find_index(args, num);
 	k = j;
 	tmp = num;
@@ -101,39 +99,38 @@ int	*find_longest_path(int *args, int num)
 		tmp = find_next_smaller(args, tmp, j);
 		j = find_index(args, tmp);
 	}
-	ret = (long int *)malloc(sizeof(long int) * i);
-	ret[i] = 2147483648;
-	while (i > 0)
+	ret = (long *)malloc(sizeof(long) * i + 1);
+	ret[i - 1] = (long)INT_MAX + 1;
+	i -= 2;
+	while (i >= 0)
 	{
-		ret[i - 1] = num;
+		ret[i] = num;
+		printf("trovo sequenza: %ld\n", ret[i]);
 		i--;
 		num = find_next_smaller(args, num, k);
 		k = find_index(args, num);
 	}
+	printf("<--->\n");
 	return (ret);
 }
 
-/* !!! RIVEDERE PER BENE TUTTI I CAST A LONG !!! */
+/* parametro array --> create_array() */
+long	*ret_longest_array(long *array)
+{
+	long	i;
+	long	*longest;
+	long	*tmp;
 
-// int	*ret_longest_array(int *array)
-// {
-// 	int	i;
-// 	int	**matrix;
-// 	int	l;
-
-// 	i = 0;
-// 	while (array[i] != INT_MAX + 1)
-// 		i++;
-// 	matrix = (int **)malloc(sizeof(int *) * i);
-// 	while (--i >= 0)
-// 	{
-// 		/* Funzione per trovare la sequenza piu' lunga */
-// 		matrix[i] = find_longest_path(array, array[i]);
-// 		while (l > 0)
-// 		{
-// 			printf("Matrix[i]: %d\n", matrix[i][l]);
-// 			l--;
-// 		}
-// 	}
-	
-// }
+	i = array_size(array) - 1;
+	longest = NULL;
+	while (i >= 0)
+	{
+		tmp = find_longest_path(array, array[i], 1);
+		if (array_size(tmp) > array_size(longest))
+			longest = tmp;
+		else
+			free(tmp);
+		i--;
+	}
+	return (longest);
+}

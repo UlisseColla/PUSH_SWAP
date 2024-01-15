@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:33 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/12 18:58:05 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:14:52 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,29 @@ void	show_stack(t_stack **stack)
 		tmp = tmp->next;
 	}
 	ft_printf("\n");
+}
+
+long	array_size(long *array)
+{
+	long	i;
+
+	if (array == NULL)
+		return (0);
+	i = 0;
+	while (array[i] != (long)INT_MAX + 1)
+		i++;
+	return (i);
+}
+
+void	free_mat_long(long **mat)
+{
+	int	y;
+
+	y = 0;
+	while (mat[y])
+	{
+		free(mat[y]);
+		y++;
+	}
+	free(mat);
 }
