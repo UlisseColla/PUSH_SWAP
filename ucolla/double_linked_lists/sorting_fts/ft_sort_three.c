@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:54 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 19:01:09 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/16 15:27:00 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "../push_swap_dll.h"
 
 void	ft_sort_three(t_stack **stack)
 {

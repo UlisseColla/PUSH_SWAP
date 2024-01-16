@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:26:15 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/15 18:08:25 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/16 16:46:52 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,18 @@ static int	index_find_smallest(t_stack **stack)
 void	index_stack_init(t_stack **stack)
 {
 	int		i;
+	int		j;
 	int		smallest;
-	t_stack	*a;
 	t_stack	*b;
 
 	i = 1;
-	a = *stack;
-	while (a)
+	j = ft_list_size(*stack);
+	b = *stack;
+	while (i <= j)
 	{
-		b = *stack;
 		smallest = index_find_smallest(&b);
 		ft_list_find_node(b, smallest)->index = i;
 		ft_list_find_node(b, smallest)->has_index = true;
-		a = a->next;
 		i++;
 	}
 }

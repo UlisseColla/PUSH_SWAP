@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:14:30 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:04:27 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/16 15:26:32 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "../push_swap_dll.h"
 
 void	reverse_rotate_a(t_stack **stack)
 {

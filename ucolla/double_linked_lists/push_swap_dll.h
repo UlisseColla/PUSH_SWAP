@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/15 18:26:26 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/16 18:29:51 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ int		arr_find_biggest(int *array);
 /* --- Sorting --- */
 void	ft_sort_three(t_stack **stack);
 void	ft_sort_five(t_stack **stack_a, t_stack **stack_b);
+void	push_in_b(t_stack **stack_a, t_stack **stack_b);
+void	push_in_a(t_stack **a, t_stack **b);
+// long	calculate_cost_b(t_stack **stack_a, t_stack **stack_b);
 
 /* Trova sequenza piu' lunga */
 long	find_index(long *args, long num);

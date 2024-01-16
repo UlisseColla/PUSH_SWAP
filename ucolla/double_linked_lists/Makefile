@@ -26,6 +26,7 @@ FUNCTIONS_LIST:= lib_dll/ft_create_list \
 				sorting_fts/ft_sort_three \
 				sorting_fts/ft_sort_five \
 				sorting_fts/sorting \
+				sorting_fts/push_in_b \
 				push_swap_utils \
 				index_stack \
 				check_input \

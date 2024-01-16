@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:22:11 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/15 17:54:17 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/16 15:27:49 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "../push_swap_dll.h"
 
 /* 
 	1. Definire una funzione cost() per calcolare quante mosse mi costa mettere un 
