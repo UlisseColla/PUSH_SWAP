@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:33 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/15 18:08:52 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/18 18:00:20 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	show_stack(t_stack **stack)
 	tmp = *stack;
 	while (tmp)
 	{
-		printf("stack: %d, index: %d, push:%d\n", tmp->value, tmp->index, tmp->push);
+		printf("stack: %d, index: %d\n", tmp->value, tmp->index);
 		tmp = tmp->next;
 	}
 	ft_printf("\n");

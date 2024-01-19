@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/16 18:28:31 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/18 14:43:13 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ int main(int argc, char **argv)
 	path = ret_longest_array(create_array(a));
 	index_push_init(a, path);
 	push_in_b(&a, &b);
-	ft_printf("STACK_A\n");
-	show_stack(&a);
-	ft_printf("STACK_B\n");
-	show_stack(&b);
+	// ft_printf("STACK_A\n");
+	// show_stack(&a);
+	// ft_printf("STACK_B\n");
+	// show_stack(&b);
 	push_in_a(&a, &b);
 	ft_printf("STACK_A\n");
 	show_stack(&a);
