@@ -6,12 +6,67 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/01/22 15:41:52 by ucolla           ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2024/01/11 15:31:34 by aconciar         ###   ########.fr       */
+=======
+/*   Updated: 2024/01/18 14:43:13 by ucolla           ###   ########.fr       */
+>>>>>>> c140b2b4faa4594cf07daa5b478e371222c1772c
+>>>>>>> 723fa553b5d1dbd611d85070f24b4267cd4f1e91
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_dll.h"
 
+<<<<<<< HEAD
+=======
+/* int main(int argc, char **argv)
+{
+	t_stack *a;
+	t_stack *b;
+	// long	*path;
+	int 	i;
+
+	// Primo check dei parametri
+	int file = open("ARGS", O_RDONLY, 0666);
+	(void)argv;
+	if (check_input(get_next_line(file)) == 1 || argc < 0)
+	{
+		ft_putstr_fd("Wrong set of parameters\n", 2);
+		return (1);
+	}
+	else
+	{
+		int file = open("ARGS", O_RDONLY, 0666);
+		a = ft_create_list(get_next_line(file));
+	}
+	b = NULL;
+<<<<<<< HEAD
+	
+	// push_b(&b, &a);
+	index_stack_init(&a);
+	// ft_sort_three(&a);
+	// ft_printf("Lunghezza lista: %d\n", ft_list_size(a));
+	// ft_sort_five(&a, &b);
+	while (a)
+=======
+	i = 0;
+	index_stack_init(&a);
+	path = ret_longest_array(create_array(a));
+	index_push_init(a, path);
+	while (path[i] != (long)INT_MAX + 1)
+	{
+		printf("path index: %ld\n", path[i]);
+		i++;
+	}
+	show_stack(&a);
+
+	return (0);	
+} */
+
+>>>>>>> 723fa553b5d1dbd611d85070f24b4267cd4f1e91
 int main(int argc, char **argv)
 {
 	t_stack *a;
@@ -22,6 +77,7 @@ int main(int argc, char **argv)
 	int file = open("ARGS", O_RDONLY, 0666);
 	(void)argv;
 	if (check_input(get_next_line(file)) == 1 || argc < 0)
+>>>>>>> c140b2b4faa4594cf07daa5b478e371222c1772c
 	{
 		ft_putstr_fd("Wrong set of parameters\n", 2);
 		return (1);
@@ -49,6 +105,9 @@ int main(int argc, char **argv)
 	show_stack(&b);
 
 	return (0);
+<<<<<<< HEAD
+}
+=======
 }
 
 /* int main(void)
@@ -67,3 +126,4 @@ int main(int argc, char **argv)
 	free(b);
 	b = NULL;
 } */
+>>>>>>> c140b2b4faa4594cf07daa5b478e371222c1772c
