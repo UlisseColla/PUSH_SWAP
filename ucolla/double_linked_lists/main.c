@@ -6,11 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/01/11 14:46:19 by aconciar         ###   ########.fr       */
-=======
-/*   Updated: 2024/01/10 19:35:52 by ucolla           ###   ########.fr       */
->>>>>>> f65d8b8d2ca0f7e21b7c04e456972d3f78c3dde7
+/*   Updated: 2024/01/11 15:31:34 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +19,12 @@ int main(int argc, char **argv)
 
 	a = ft_create_list(argc, argv);
 	b = NULL;
-
+	
+	// push_b(&b, &a);
+	index_stack_init(&a);
+	// ft_sort_three(&a);
+	// ft_printf("Lunghezza lista: %d\n", ft_list_size(a));
+	// ft_sort_five(&a, &b);
 	while (a)
 	{
 		printf("a: %d, index: %d, has_index: %d\n", a->value, a->index, a->has_index);
@@ -37,4 +38,3 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
-	
