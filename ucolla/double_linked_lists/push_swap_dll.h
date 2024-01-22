@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/16 18:29:51 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/22 15:40:14 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,23 @@ typedef struct t_double_node
 	long					cost;
 	bool					has_index;
 	bool					push;
+	struct t_operations		*ops;
 	struct t_double_node	*next;
 	struct t_double_node	*prev;
 }	t_stack;
+
+typedef struct t_operations
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_ops;
 
 /* Funzioni base --> lib_dll */
 t_stack	*ft_create_node(int value);
@@ -43,6 +57,7 @@ void	ft_list_addback(t_stack **list, t_stack *new);
 int		ft_list_size(t_stack *list);
 
 /* --- Operazioni --- */
+void	init_moves(t_stack **node);
 
 /* Push */
 void	push_a(t_stack **stack, t_stack **node);

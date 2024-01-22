@@ -6,46 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:23 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/18 14:43:13 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/22 15:41:52 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_dll.h"
-
-/* int main(int argc, char **argv)
-{
-	t_stack *a;
-	t_stack *b;
-	// long	*path;
-	int 	i;
-
-	// Primo check dei parametri
-	int file = open("ARGS", O_RDONLY, 0666);
-	(void)argv;
-	if (check_input(get_next_line(file)) == 1 || argc < 0)
-	{
-		ft_putstr_fd("Wrong set of parameters\n", 2);
-		return (1);
-	}
-	else
-	{
-		int file = open("ARGS", O_RDONLY, 0666);
-		a = ft_create_list(get_next_line(file));
-	}
-	b = NULL;
-	i = 0;
-	index_stack_init(&a);
-	path = ret_longest_array(create_array(a));
-	index_push_init(a, path);
-	while (path[i] != (long)INT_MAX + 1)
-	{
-		printf("path index: %ld\n", path[i]);
-		i++;
-	}
-	show_stack(&a);
-
-	return (0);	
-} */
 
 int main(int argc, char **argv)
 {
@@ -54,7 +19,6 @@ int main(int argc, char **argv)
 	long	*path;
 	int 	i;
 
-	// Primo check dei parametri
 	int file = open("ARGS", O_RDONLY, 0666);
 	(void)argv;
 	if (check_input(get_next_line(file)) == 1 || argc < 0)
@@ -69,6 +33,7 @@ int main(int argc, char **argv)
 	}
 	b = NULL;
 	i = 0;
+	(void)i;
 	index_stack_init(&a);
 	path = ret_longest_array(create_array(a));
 	index_push_init(a, path);
