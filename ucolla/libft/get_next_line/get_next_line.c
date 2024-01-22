@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:20:19 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/04 18:03:42 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/12 12:34:08 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
-	ft_putstr_fd_gnl("heredoc> ", 1);
 	tmp = find_line(fd, &extra_char);
 	if (tmp == NULL)
 		return (NULL);

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 17:10:37 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/12 11:35:20 by ucolla           ###   ########.fr       */
+/*   Created: 2024/01/12 11:33:57 by ucolla            #+#    #+#             */
+/*   Updated: 2024/01/12 11:34:34 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long int	ft_atol(const char *nptr)
 {
-	int			counter_minus;
-	int			i;
-	long int	c;
+	int				counter_minus;
+	int				i;
+	long long int	c;
 
 	counter_minus = 0;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:44:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:09:38 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/11 16:35:35 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int	ft_list_size(t_stack *list)
 {
+	t_stack	*tmp;
 	int		i;
 
+	tmp = list;
 	i = 0;
-	while (list)
+	while (tmp)
 	{
-		list = list->next;
+		tmp = tmp->next;
 		i++;
 	}
 	return (i);

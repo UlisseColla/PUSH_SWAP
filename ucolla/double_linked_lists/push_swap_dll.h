@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 19:36:12 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/16 18:29:51 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_DLL_H
 
 # include "../libft/libft.h"
+# include "../libft/get_next_line/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -24,19 +25,21 @@ typedef struct t_double_node
 {
 	int						value;
 	int						index;
+	long					cost;
 	bool					has_index;
+	bool					push;
 	struct t_double_node	*next;
 	struct t_double_node	*prev;
 }	t_stack;
 
 /* Funzioni base --> lib_dll */
 t_stack	*ft_create_node(int value);
-t_stack	*ft_create_list(int argc, char **argv);
+t_stack	*ft_create_list(char *str_args);
 t_stack	*ft_list_last(t_stack *list);
+t_stack	*ft_list_find_node(t_stack *list, int value);
 void	ft_free_list(t_stack *list);
 void	ft_list_addfront(t_stack **list, t_stack *new);
 void	ft_list_addback(t_stack **list, t_stack *new);
-t_stack	*ft_list_find_node(t_stack *list, int value);
 int		ft_list_size(t_stack *list);
 
 /* --- Operazioni --- */
@@ -67,10 +70,27 @@ int		find_smallest(t_stack **stack);
 int		find_biggest(t_stack **stack);
 int		check_order(t_stack *stack);
 void	index_stack_init(t_stack **stack);
+void	index_push_init(t_stack *stack, long *path);
+void	show_stack(t_stack **stack);
+void	push_biggest(t_stack **stack_a, t_stack **stack_b);
+int		check_input(char *str);
+void	free_mat(char **mat);
+int		arr_find_biggest(int *array);
 
 /* --- Sorting --- */
-
 void	ft_sort_three(t_stack **stack);
 void	ft_sort_five(t_stack **stack_a, t_stack **stack_b);
+void	push_in_b(t_stack **stack_a, t_stack **stack_b);
+void	push_in_a(t_stack **a, t_stack **b);
+// long	calculate_cost_b(t_stack **stack_a, t_stack **stack_b);
+
+/* Trova sequenza piu' lunga */
+long	find_index(long *args, long num);
+long	*find_longest_path(long *args, long num, long i);
+long	find_next_smaller(long *args, long num, long index);
+long	*create_array(t_stack *stack);
+long	*ret_longest_array(long *array);
+long	array_size(long *array);
+void	free_mat_long(long **mat);
 
 #endif

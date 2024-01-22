@@ -6,23 +6,27 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:51:04 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:09:13 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/16 16:45:43 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap_dll.h"
 
-t_stack	*ft_create_list(int argc, char **argv)
+t_stack	*ft_create_list(char *str_args)
 {
 	t_stack	*list;
 	t_stack	*new;
 	int		i;
+	char	**args;
 
-	i = 1;
 	list = NULL;
-	while (i < argc)
+	i = 0;
+	args = ft_split(str_args, ' ');
+	while (args[i])
 	{
-		new = ft_create_node(ft_atoi(argv[i]));
+		new = ft_create_node(ft_atoi(args[i]));
+		new->push = false;
+		new->has_index = false;
 		if (new == NULL)
 		{
 			ft_free_list(list);
@@ -31,5 +35,6 @@ t_stack	*ft_create_list(int argc, char **argv)
 		ft_list_addback(&list, new);
 		i++;
 	}
+	free_mat(args);
 	return (list);
 }
