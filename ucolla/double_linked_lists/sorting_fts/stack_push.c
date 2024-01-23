@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:21:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/22 17:22:07 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/22 19:04:42 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,47 +34,53 @@ void	push_in_b(t_stack **a, t_stack **b)
 		i--;
 	}
 }
- 
-long	calculate_cost(t_stack **stack, long index)
+
+/* Calcolo mosse per raggiungere la testa dello stack */
+long	cost_to_top_b(t_stack **stack, long size)
 {
 	long	i;
 	long	j;
 	t_stack	*tmp;
 
-	i = ft_list_size(*stack);
+	i = 0;
 	j = 0;
 	tmp = *stack;
-	while (j < i && tmp)
+	while (tmp && tmp->prev)
 	{
-		if (tmp->index > index || index > (ft_list_find_node(*stack, find_biggest(stack)))->index)
-			break ;
-		tmp = tmp->next;
-		j++;
-	}
-	// printf("calculate j: %ld -- i: %ld\n", j, n_rotate);
-	return (j 1);
-}
-
-long	calculate_cost_bottom(t_stack **stack, long index, long n_r_rotate)
-{
-	long	i;
-	long	j;
-	t_stack	*tmp;
-
-	i = ft_list_size(*stack);
-	j = 0;
-	tmp = ft_list_last(*stack);
-	while (j < i && tmp)
-	{
-		if (tmp->index > index  || index > (ft_list_find_node(*stack, find_biggest(stack)))->index)
-			break ;
+		if (i < size / 2)
+			j++;
+		else
+			j--;
+		i++;
 		tmp = tmp->prev;
-		j++;
 	}
-	return (j + n_r_rotate + 1);
+	if (i < size / 2)
+		(*stack)->ops->rb = j;
+	else
+		(*stack)->ops->rrb = j;
+	return (j);
 }
 
-void	push_in_a(t_stack **a, t_stack **b)
+// long	calculate_cost_bottom(t_stack **stack, long index, long n_r_rotate)
+// {
+// 	long	i;
+// 	long	j;
+// 	t_stack	*tmp;
+
+// 	i = ft_list_size(*stack);
+// 	j = 0;
+// 	tmp = ft_list_last(*stack);
+// 	while (j < i && tmp)
+// 	{
+// 		if (tmp->index > index  || index > (ft_list_find_node(*stack, find_biggest(stack)))->index)
+// 			break ;
+// 		tmp = tmp->prev;
+// 		j++;
+// 	}
+// 	return (j + n_r_rotate + 1);
+// }
+
+/* void	push_in_a(t_stack **a, t_stack **b)
 {
 	long	i;
 	long	j;
@@ -93,16 +99,10 @@ void	push_in_a(t_stack **a, t_stack **b)
 	}
 	j = 0;
 	tmp = ft_list_last(*b);
-	// while (j < i)
-	// {
-	// 	printf("<<< Costo: %ld -- index: %d >>>\n\n", calculate_cost_bottom(a, tmp->index, j), tmp->index);
-	// 	tmp = tmp->prev;
-	// 	j++;
-	// }
-}
-
-// while ((*b)->index > (*a)->index)
-// {
-// 	rotate_a(a);
-// 	if ()
-// }
+	while (j < i)
+	{
+		printf("<<< Costo: %ld -- index: %d >>>\n\n", calculate_cost_bottom(a, tmp->index, j), tmp->index);
+		tmp = tmp->prev;
+		j++;
+	}
+} */
