@@ -12,7 +12,7 @@ GNL:= get_next_line.a
 PATH_PRINTF:= ../ft_printf
 FT_PRINTF:= libftprintf.a
 
-FUNCTIONS_LIST:= lib_dll/ft_create_list \
+FILES_LIST:= lib_dll/ft_create_list \
 				lib_dll/ft_create_node \
 				lib_dll/ft_free_list \
 				lib_dll/ft_list_size \
@@ -26,13 +26,14 @@ FUNCTIONS_LIST:= lib_dll/ft_create_list \
 				sorting_fts/ft_sort_three \
 				sorting_fts/ft_sort_five \
 				sorting_fts/sorting \
-				sorting_fts/push_in_b \
+				sorting_fts/stack_push \
+				sorting_fts/ft_lis \
 				push_swap_utils \
 				index_stack \
 				check_input \
 				main \
 
-FUNCTIONS:= $(patsubst %, %.c, $(FUNCTIONS_LIST))
+FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))
 
 FUNCTIONS_OBJ:= $(FUNCTIONS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:51:04 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/16 16:45:43 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/22 14:51:44 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_stack	*ft_create_list(char *str_args)
 			return (NULL);
 		}
 		ft_list_addback(&list, new);
+		init_moves(&new);
+		// printf("moves: %d\n", new->ops->sa);
 		i++;
 	}
 	free_mat(args);
