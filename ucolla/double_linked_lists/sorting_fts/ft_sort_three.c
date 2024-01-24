@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:54 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 17:28:48 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/24 18:31:01 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_sort_three(t_stack **stack)
 {
 	// t_list *tmp = NULL;
 	
-	if (((*stack)->value) == find_biggest(stack)) //max all'inizio
+	if (((*stack)->value) == find_biggest(*stack)) //max all'inizio
 	{
-		if (((*stack)->next->value) == find_smallest(stack))
+		if (((*stack)->next->value) == find_smallest(*stack))
 			ra(stack);
 		else
 		{
@@ -26,9 +26,9 @@ void	ft_sort_three(t_stack **stack)
 			rra(stack);
 		}
 	}
-	else if (((*stack)->value) == find_smallest(stack)) //min all'inizio
+	else if (((*stack)->value) == find_smallest(*stack)) //min all'inizio
 	{
-		if (((*stack)->next->value) == find_biggest(stack))
+		if (((*stack)->next->value) == find_biggest(*stack))
 		{
 			rra(stack);
 			sa(stack);
@@ -36,7 +36,7 @@ void	ft_sort_three(t_stack **stack)
 	}
 	else // middle all'inizio
 	{
-		if (((*stack)->next->value) == find_biggest(stack))
+		if (((*stack)->next->value) == find_biggest(*stack))
 			rra(stack);
 		else
 			sa(stack);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 18:05:05 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/23 19:15:31 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:33:17 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_dll.h"
 
 int	find_eff(t_stack *stack, int index)
 {
@@ -33,7 +33,8 @@ void	sorting(t_stack **stack_a, t_stack **stack_b)
 	pb(stack_b, stack_a);
 	while (ft_list_size(*stack_a) > 3)
 		push_a_to_b(stack_a, stack_b);
-	three_numbers_a(stack_a);
+	// three_numbers_a(stack_a);
+	ft_sort_three(stack_a);
 	while ((*stack_b)->next)
 		push_b_to_a(stack_a, stack_b);
 	push_b_to_a(stack_a, stack_b);

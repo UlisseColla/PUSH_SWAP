@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:33 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 17:19:22 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/24 18:32:21 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int	find_value(t_stack *stack, int value)
 	return (0);
 }
 
-int	find_smallest(t_stack **stack)
+int	find_smallest(t_stack *stack)
 {
 	int		min_value;
 	int		current_value;
 	t_stack	*tmp;
 
 	min_value = INT_MAX;
-	tmp = *stack;
+	tmp = stack;
 	while (tmp)
 	{
 		current_value = tmp->value;
@@ -41,14 +41,14 @@ int	find_smallest(t_stack **stack)
 	return (min_value);
 }
 
-int	find_biggest(t_stack **stack)
+int	find_biggest(t_stack *stack)
 {
 	int		max_value;
 	int		current_value;
 	t_stack	*tmp;
 
 	max_value = INT_MIN;
-	tmp = *stack;
+	tmp = stack;
 	while (tmp)
 	{
 		current_value = tmp->value;

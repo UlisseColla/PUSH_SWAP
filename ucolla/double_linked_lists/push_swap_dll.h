@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 17:27:11 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/24 18:30:16 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	rrr(t_stack **stack_a, t_stack **stack_b);
 /* --- Logica --- */
 
 /* Utils */
-int		find_smallest(t_stack **stack);
-int		find_biggest(t_stack **stack);
+int		find_smallest(t_stack *stack);
+int		find_biggest(t_stack *stack);
 int		check_order(t_stack *stack);
 void	index_stack_init(t_stack **stack);
 void	index_push_init(t_stack *stack, int *lis);
@@ -104,6 +104,8 @@ int		find_smallest_after_index(t_stack *stack, int index);
 void	efficiency_counter(t_stack *stack_a, t_stack *stack_b, int index, t_operator **value);
 void	check_efficiency(t_stack *stack_a, t_stack *stack_b, t_operator *value);
 int		efficiency_counter_no_save(t_stack *stack_a, t_stack *stack_b, int index);
+int		find_smallest_after_index(t_stack *stack, int index);
+int		find_biggest_before_index(t_stack *stack, int index);
 
 /* LIS */
 int		*create_array(t_stack *stack, int size);

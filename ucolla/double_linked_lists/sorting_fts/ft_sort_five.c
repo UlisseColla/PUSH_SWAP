@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:44 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 17:29:59 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/24 18:31:18 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	push_biggest(t_stack **stack_a, t_stack **stack_b)
 	while (a)
 	{
 		b = *stack_a;
-		if (a->value == find_biggest(&b))
+		if (a->value == find_biggest(b))
 			break ;
 		a = a->next;
 		i++;
