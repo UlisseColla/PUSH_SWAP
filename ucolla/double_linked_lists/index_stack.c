@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:26:15 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/23 17:53:08 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:11:52 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	index_stack_init(t_stack **stack)
 	}
 }
 
-void	index_push_init(t_stack *stack, int *path, int size)
+void	index_push_init(t_stack *stack, int *lis)
 {
 	t_stack	*tmp;
 	int		i;
@@ -60,9 +60,9 @@ void	index_push_init(t_stack *stack, int *path, int size)
 	{
 		i = 0;
 		tmp->push = true;
-		while (i < size)
+		while (lis[i] != -1)
 		{
-			if (path[i] == tmp->index)
+			if (lis[i] == tmp->index)
 				tmp->push = false;
 			i++;
 		}

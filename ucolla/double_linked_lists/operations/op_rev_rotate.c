@@ -6,13 +6,13 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:14:30 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/16 15:26:32 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:27:29 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap_dll.h"
 
-void	reverse_rotate_a(t_stack **stack)
+void	rra(t_stack **stack)
 {
 	t_stack	*value;
 	t_stack	*seclast_node;
@@ -29,7 +29,7 @@ void	reverse_rotate_a(t_stack **stack)
 	ft_printf("rra\n");
 }
 
-void	reverse_rotate_b(t_stack **stack)
+void	rrb(t_stack **stack)
 {
 	t_stack	*value;
 	t_stack	*seclast_node;
@@ -48,7 +48,7 @@ void	reverse_rotate_b(t_stack **stack)
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	reverse_rotate_a(stack_a);
-	reverse_rotate_b(stack_b);
+	rra(stack_a);
+	rrb(stack_b);
 	ft_printf("rrr\n");
 }

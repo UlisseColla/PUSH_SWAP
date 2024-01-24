@@ -6,13 +6,13 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:04:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/16 15:26:41 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:26:57 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap_dll.h"
 
-void	swap_a(t_stack **stack)
+void	sa(t_stack **stack)
 {
 	t_stack	*node;
 
@@ -23,7 +23,7 @@ void	swap_a(t_stack **stack)
 	ft_printf("sa\n");
 }
 
-void	swap_b(t_stack **stack)
+void	sb(t_stack **stack)
 {
 	t_stack	*node;
 
@@ -36,12 +36,12 @@ void	swap_b(t_stack **stack)
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
-	swap_a(stack_a);
-	swap_b(stack_b);
+	sa(stack_a);
+	sb(stack_b);
 	ft_printf("ss\n");
 }
 
-void	push_a(t_stack **stack, t_stack **node)
+void	pa(t_stack **stack, t_stack **node)
 {
 	t_stack	*tmp_node;
 
@@ -51,7 +51,7 @@ void	push_a(t_stack **stack, t_stack **node)
 	ft_printf("pa\n");
 }
 
-void	push_b(t_stack **stack, t_stack **node)
+void	pb(t_stack **stack, t_stack **node)
 {
 	t_stack	*tmp_node;
 

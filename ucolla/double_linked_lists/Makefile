@@ -25,12 +25,15 @@ FILES_LIST:= lib_dll/ft_create_list \
 				operations/op_swap_and_push \
 				sorting_fts/ft_sort_three \
 				sorting_fts/ft_sort_five \
-				sorting_fts/sorting \
-				sorting_fts/stack_push \
+				sorting_fts/create_array \
 				sorting_fts/ft_lis \
+				sorting_fts/push_b_to_a \
+				sorting_fts/push_a_to_b \
 				push_swap_utils \
+				find_functions \
 				index_stack \
 				check_input \
+				sorting \
 				main \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))

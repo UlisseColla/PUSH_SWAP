@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:44 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/16 15:26:58 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:29:59 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void	push_biggest(t_stack **stack_a, t_stack **stack_b)
 	if (i <= ft_list_size(*stack_a) / 2)
 	{
 		while (--i >= 0)
-			rotate_a(stack_a);
+			ra(stack_a);
 	}
 	else
 	{
 		while (++i <= ft_list_size(*stack_a))
-			reverse_rotate_a(stack_a);
+			rra(stack_a);
 	}
-	push_b(stack_b, stack_a);
+	pb(stack_b, stack_a);
 }
 
 void	ft_sort_five(t_stack **stack_a, t_stack **stack_b)
@@ -46,9 +46,9 @@ void	ft_sort_five(t_stack **stack_a, t_stack **stack_b)
 	push_biggest(stack_a, stack_b);
 	push_biggest(stack_a, stack_b);
 	ft_sort_three(stack_a);
-	swap_b(stack_b);
-	push_a(stack_a, stack_b);
-	push_a(stack_a, stack_b);
-	rotate_a(stack_a);
-	rotate_a(stack_a);
+	sb(stack_b);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
+	ra(stack_a);
+	ra(stack_a);
 }
