@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_chunk.c                                      :+:      :+:    :+:   */
+/*   index_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:33:44 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/23 17:08:11 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:00:15 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	index_init(t_stack **stack)
+int	lis_init()
+{
+	int	*array_lis;
+	int	*array_stack;
+
+	array_stack = ft_calloc(ft_list_size(stack), sizeof(int));
+	ft_stack_to_array()
+	array = ft_lis(array, ft_list_size(stack));
+	while ()
+}
+
+int	find_index(t_stack **stack)
 {
 	int		min_value;
 	int		current_value;
@@ -30,7 +41,7 @@ int	index_init(t_stack **stack)
 	return (min_value);
 }
 
-void	chunk_init(t_stack **stack)
+void	index_init(t_stack **stack)
 {
 	int		i;
 	int		smallest;
@@ -42,10 +53,11 @@ void	chunk_init(t_stack **stack)
 	while (a)
 	{
 		b = *stack;
-		smallest = index_init(&b);
+		smallest = find_index(&b);
 		ft_list_find_node(b, smallest)->index = i;
 		ft_list_find_node(b, smallest)->has_index = 1;
 		a = a->next;
 		i++;
 	}
+	lis_intit();
 }

@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:34:02 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/23 18:08:38 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:08:03 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 	stack_b = NULL;
 	if (stack_init(argc, argv, &stack_a) == 1)
 		return (ft_printf("Error\n"));
-	chunk_init(&stack_a);
+	index_init(&stack_a);
 	if (ft_list_size(stack_a) == 2 && check_order(stack_a) == 1)
 		two_numbers_a(&stack_a);
 	else if (ft_list_size(stack_a) == 3 && check_order(stack_a) == 1)

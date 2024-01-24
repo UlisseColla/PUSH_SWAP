@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:39:39 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/23 18:04:34 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:55:00 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_stack
 	int						value;
 	int						index;
 	int						has_index;
+	int						push;
 	struct s_stack			*next;
 	struct s_stack			*prev;
 }				t_stack;
@@ -71,7 +72,9 @@ void	three_numbers_a(t_stack **stack_a);
 void	three_numbers_b(t_stack **stack_b);
 void	five_numbers(t_stack **stack_a, t_stack **stack_b);
 void	sorting(t_stack **stack_a, t_stack **stack_b);
-void	chunk_init(t_stack **stack);
+void	push_a_to_b(t_stack **stack_a, t_stack **stack_b);
+void	push_b_to_a(t_stack **stack_a, t_stack **stack_b);
+void	index_init(t_stack **stack);
 void	check_efficiency(t_stack *stack_a, t_stack *stack_b, t_operator *value);
 int		efficiency_counter_no_save(t_stack *stack_a, t_stack *stack_b, int index);
 int		find_biggest(t_stack *stack);
@@ -79,5 +82,6 @@ int		find_smallest(t_stack *stack);
 int		find_biggest_before_index(t_stack *stack, int index);
 int		find_smallest_after_index(t_stack *stack, int index);
 int		find_value(t_stack *stack, int value);
+int		find_eff(t_stack *stack, int index);
 
 #endif
