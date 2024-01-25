@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:34:22 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/23 19:20:47 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:46:54 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,11 @@ int	*build_array(int *length, int *array, int *sub_sequence, int size)
 	int	u;
 
 	biggest_length = arr_biggest(length, size);
-	ret = (int *)malloc(sizeof(int) * (biggest_length));
-	p = biggest_length - 1;
+	ret = (int *)malloc(sizeof(int) * (biggest_length + 1));
+	p = biggest_length;
 	u = sub_sequence[ft_index(length, biggest_length)];
+	ret[p] = -1;
+	p--;
 	ret[p] = array[ft_index(length, biggest_length)];
 	p--;
 	while (p >= 0)

@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:39:39 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/24 15:55:00 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:25:20 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_stack	*ft_list_find_node(t_stack *list, int value);
 int		ft_list_size(t_stack *list);
 int		check_input(char *str);
 int		stack_init(int	argc, char *argv[], t_stack **stack_a);
+int		*ft_lis(int *array, int size, int i, int j);
 void	pa(t_stack **stack, t_stack **node);
 void	pb(t_stack **stack, t_stack **node);
 void	sa(t_stack **stack);
