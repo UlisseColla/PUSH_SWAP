@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:34:22 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 18:11:40 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/25 17:33:00 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	*build_array(int *length, int *array, int *sub_sequence, int size)
 		u = sub_sequence[u];
 		p--;
 	}
+	//free length e sub_sequence
 	return (ret);
 }
 
@@ -100,3 +101,8 @@ int	*ft_lis(int *array, int size, int i, int j)
 	}
 	return (build_array(length, array, sub_sequence, size));
 }
+
+int	*ft_list_lis(t_stack **stack)
+{
+	
+}	

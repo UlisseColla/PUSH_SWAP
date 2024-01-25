@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:41:00 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 18:13:15 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/25 17:29:50 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 	index_stack_init(&a);
 	path = ft_lis(create_array(a, ft_list_size(a)), ft_list_size(a), 1, 0);
 	index_push_init(a, path);
+	//free path
 	// sorting(&a, &b);
 
 	// ft_printf("STACK_A\n");
