@@ -6,58 +6,35 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:13:37 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/23 19:14:09 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:40:19 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	r_operations(t_stack **stack_a, t_stack **stack_b, t_operator operator)
+int	find_push(t_stack *stack, int push_value)
 {
-	while (operator.rr > 0)
-	{
-		rr(stack_a, stack_b);
-		operator.rr--;
-	}
-	while (operator.ra > 0)
-	{
-		ra(stack_a);
-		operator.ra--;
-	}
-	while (operator.rb > 0)
-	{
-		rb(stack_b);
-		operator.rb--;
-	}
-}
+	int i;
 
-void	rr_operations(t_stack **stack_a, t_stack **stack_b, t_operator operator)
-{
-	while (operator.rrr > 0)
+	i = 0;
+	while (stack)
 	{
-		rrr(stack_a, stack_b);
-		operator.rrr--;
+		if (stack->push == push_value)
+			return (i);
+		stack = stack->next;
+		i++;
 	}
-	while (operator.rra > 0)
-	{
-		rra(stack_a);
-		operator.rra--;
-	}
-	while (operator.rrb > 0)
-	{
-		rrb(stack_b);
-		operator.rrb--;
-	}
+	return(-1);
 }
 
 void	push_a_to_b(t_stack **stack_a, t_stack **stack_b)
 {
-	t_operator operator;
-
-	check_efficiency(*stack_a, *stack_b, &operator);
-	r_operations(stack_a, stack_b, operator);
-	rr_operations(stack_a, stack_b, operator);
+	while ((*stack_a)->push != 0)
+	{
+		if (find_push(*stack_a, 0) > (ft_list_size(*stack_a) / 2))
+			rra(stack_a);
+		else
+			ra(stack_a);
+	}
 	pb(stack_b, stack_a);
-	if ((*stack_b)->index == find_smallest(*stack_b))
-		rb(stack_b);
 }

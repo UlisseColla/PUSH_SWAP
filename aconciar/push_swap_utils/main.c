@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:34:02 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/23 19:08:03 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:10:44 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	main(int argc, char *argv[])
 	else if (check_order(stack_a) == 1)
 		sorting(&stack_a, &stack_b);
 	// ft_print_stack(stack_a);
+	// ft_printf("\nSTACK_B\n");
+	// ft_print_stack(stack_b);
 	ft_free_list(stack_a);
 	return (0);
 }
+

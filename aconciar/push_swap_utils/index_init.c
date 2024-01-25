@@ -6,21 +6,57 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:33:44 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/24 16:00:15 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:08:31 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	lis_init()
+int ft_if_in(int index, int *array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i] != -1)
+	{
+		if (array[i] == index)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	*create_array(t_stack *stack, int size)
+{
+	int		*array;
+	int		i;
+	t_stack	*tmp;
+
+	array = (int *)malloc(sizeof(int) * (ft_list_size(stack) + 1));
+	i = 0;
+	tmp = stack;
+	while (tmp && i < size)
+	{
+		array[i] = tmp->index;
+		i++;
+		tmp = tmp->next;
+	}
+	return (array);
+}
+
+void	lis_init(t_stack **stack)
 {
 	int	*array_lis;
-	int	*array_stack;
+	t_stack *temp;
 
-	array_stack = ft_calloc(ft_list_size(stack), sizeof(int));
-	ft_stack_to_array()
-	array = ft_lis(array, ft_list_size(stack));
-	while ()
+	temp = *stack;
+	array_lis = ft_lis(create_array(*stack, ft_list_size(*stack)), ft_list_size(*stack), 1, 0);
+	while (temp)
+	{
+		if (ft_if_in(temp->index, array_lis) == 1)
+			temp->push = 1;
+		temp = temp->next;
+	}
 }
 
 int	find_index(t_stack **stack)
@@ -48,7 +84,7 @@ void	index_init(t_stack **stack)
 	t_stack	*a;
 	t_stack	*b;
 
-	i = 0;
+	i = 1;
 	a = *stack;
 	while (a)
 	{
@@ -59,5 +95,5 @@ void	index_init(t_stack **stack)
 		a = a->next;
 		i++;
 	}
-	lis_intit();
+	lis_init(stack);
 }
