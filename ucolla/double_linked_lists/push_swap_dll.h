@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 18:30:16 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/26 19:33:15 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,20 @@ typedef struct t_double_node
 {
 	int						value;
 	int						index;
-	long					cost;
 	bool					has_index;
 	bool					push;
 	struct t_operations		*ops;
 	struct t_double_node	*next;
 	struct t_double_node	*prev;
 }	t_stack;
+
+typedef struct s_lis
+{
+	int						length;
+	int						index;
+	bool					has_index;
+	struct s_lis			*next;
+}	t_lis;
 
 typedef struct s_operator
 {
@@ -102,10 +109,10 @@ void	push_a_to_b(t_stack **stack_a, t_stack **stack_b);
 void	push_b_to_a(t_stack **stack_a, t_stack **stack_b);
 int		find_smallest_after_index(t_stack *stack, int index);
 void	efficiency_counter(t_stack *stack_a, t_stack *stack_b, int index, t_operator **value);
-void	check_efficiency(t_stack *stack_a, t_stack *stack_b, t_operator *value);
 int		efficiency_counter_no_save(t_stack *stack_a, t_stack *stack_b, int index);
 int		find_smallest_after_index(t_stack *stack, int index);
 int		find_biggest_before_index(t_stack *stack, int index);
+void	check_efficiency(t_stack *stack_a, t_stack *stack_b, t_operator *value);
 
 /* LIS */
 int		*create_array(t_stack *stack, int size);
@@ -113,5 +120,14 @@ int		*ft_lis(int *array, int size, int i, int j);
 int		*build_array(int *length, int *array, int *sub_sequence, int size);
 int		ft_index(int *args, int num);
 int		arr_biggest(int *array, int size);
+
+/* TMP */
+void ft_list_lis(t_stack **stack, int size);
+t_stack	*ft_list_find_index(t_stack *list, int index);
+int	*create_sub_array(t_stack *stack, int tail);
+void	ft_circular_lis(t_lis **stack_lis);
+t_lis	*index_lis_init(t_stack **stack, int size_stack);
+t_lis	*ft_last_lis(t_lis *list);
+int	*find_best_lis(t_lis **lis, int i, int tail);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:41:00 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/25 17:29:50 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/26 19:35:48 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int main(int argc, char **argv)
 {
 	t_stack *a;
 	t_stack *b;
-	int		*path;
+	
 
-	int file = open("ARGS_1", O_RDONLY, 0666);
+	int file = open("ARGS_2", O_RDONLY, 0666);
 	(void)argv;
 	if (check_input(get_next_line(file)) == 1 || argc < 0)
 	{
@@ -27,20 +27,52 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		int file = open("ARGS_1", O_RDONLY, 0666);
+		int file = open("ARGS_2", O_RDONLY, 0666);
 		a = ft_create_list(get_next_line(file));
 	}
 	b = NULL;
+	(void)b;
 	index_stack_init(&a);
+	t_lis *lis = index_lis_init(&a, ft_list_size(a));
+	
+	int tmp = ft_last_lis(lis)->index;
+	ft_circular_lis(&lis);
+	while (lis->index != tmp)
+	{
+		printf("%d ", lis->length);
+		lis = lis->next;
+	}
+	printf("%d ", lis->length);
+	printf("\n");
+
+	int *lis_arr = find_best_lis(&lis, 0, tmp);
+	int t = 0;
+	while (lis_arr[t] != -1)
+	{
+		// printf("best_lis: %d\n", lis_arr[t]);
+		t++;
+	}
+	
+	// ft_list_lis(&a, ft_list_size(a));
+	
+	/* int		*path;
 	path = ft_lis(create_array(a, ft_list_size(a)), ft_list_size(a), 1, 0);
-	index_push_init(a, path);
+	int e = 0;
+	printf("path: ");
+	while (path[e] != -1)
+	{
+		printf("%d ", path[e]);
+		e++;
+	}
+	printf("\n"); */
+	// index_push_init(a, path);
 	//free path
 	// sorting(&a, &b);
 
 	// ft_printf("STACK_A\n");
 	// show_stack(&a);
 	// ft_printf("STACK_B\n");
-	show_stack(&b);
+	// show_stack(&b);
 	// push_in_a(&a, &b);
 	// ft_printf("STACK_A\n");
 	// show_stack(&a);

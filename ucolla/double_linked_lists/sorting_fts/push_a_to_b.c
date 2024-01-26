@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:16:48 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 17:17:00 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/26 15:22:23 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	push_a_to_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_operator operator;
 
-	check_efficiency(*stack_a, *stack_b, &operator);
+	// check_efficiency(*stack_a, *stack_b, &operator);
 	r_operations(stack_a, stack_b, operator);
 	rr_operations(stack_a, stack_b, operator);
 	pb(stack_b, stack_a);

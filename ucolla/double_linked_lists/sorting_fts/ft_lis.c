@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:34:22 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/25 17:33:00 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/26 19:27:51 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,62 @@ int	*ft_lis(int *array, int size, int i, int j)
 	return (build_array(length, array, sub_sequence, size));
 }
 
-int	*ft_list_lis(t_stack **stack)
+void ft_list_lis(t_stack **stack, int size)
 {
+	int		*tmp;
+	int		tmp_tail;
+	int		k;
+	int		j;
+	t_stack *stack_tmp;
+	t_stack	*substack_head;
+	t_stack	*substack_tail;
+
+
+	k = ft_list_size(*stack);
+	j = 0;
+	tmp = ft_lis(create_array(*stack, size), size, 1, 0);
+	stack_tmp = *stack;
+	stack_tmp->prev = ft_list_last(stack_tmp);
+	ft_list_last(stack_tmp)->next = stack_tmp;
+	tmp_tail = ft_list_find_index(*stack, tmp[0])->prev->index;
+	substack_tail = ft_list_find_index(*stack, tmp[0]);
+	while (tmp[j] != -1)
+	{
+		printf("LIS: %d\n", tmp[j]);
+		j++;
+	}
+	j--;
+	substack_head = ft_list_find_index(*stack, tmp[j])->next;
 	
-}	
+	// printf("tmp_head: %d\n", tmp_head);
+	// printf("tmp_tail: %d\n", tmp_tail);
+	
+	j = 0;
+	while (substack_tail->index != substack_head->index)
+	{
+		substack_tail = substack_tail->next;
+		j++;
+	}
+	
+	int a = k - j;
+	int *tmp_arr = create_sub_array(substack_head, tmp_tail);
+	int	*tmp_LIS = ft_lis(tmp_arr, a, 1, 0);
+	while (*tmp_LIS != -1)
+	{
+		printf("SUB_LIS: %d\n", *tmp_LIS);
+		tmp_LIS++;
+	}
+	printf("\n\n");
+}
+
+// void find_best_lis(t_stack **stack, int size)
+// {
+// 	t_stack *stack_tmp;
+	
+// 	stack_tmp = *stack;
+// 	while (stack_tmp)
+// 	{
+// 		ft_list_lis(stack, size);
+// 		stack_tmp = stack_tmp->next;
+// 	}
+// }
