@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:22:11 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/26 17:38:55 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/29 12:28:38 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	*create_array(t_stack *stack, int size)
 	int		i;
 	t_stack	*tmp;
 
-	array = (int *)malloc(sizeof(int) * (ft_list_size(stack)));
+	array = (int *)malloc(sizeof(int) * (ft_list_size(&stack)));
 	i = 0;
 	tmp = stack;
 	while (tmp && i < size)

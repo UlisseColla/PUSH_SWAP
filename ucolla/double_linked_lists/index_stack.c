@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:26:15 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 17:11:52 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/29 12:30:44 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	index_stack_init(t_stack **stack)
 	t_stack	*b;
 
 	i = 1;
-	j = ft_list_size(*stack);
+	j = ft_list_size(stack);
 	b = *stack;
 	while (i <= j)
 	{

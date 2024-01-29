@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/26 19:33:15 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/29 12:35:50 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_lis
 {
 	int						length;
 	int						index;
+	int						lis_index;
 	bool					has_index;
 	struct s_lis			*next;
 }	t_lis;
@@ -61,7 +62,7 @@ t_stack	*ft_list_find_node(t_stack *list, int value);
 void	ft_free_list(t_stack *list);
 void	ft_list_addfront(t_stack **list, t_stack *new);
 void	ft_list_addback(t_stack **list, t_stack *new);
-int		ft_list_size(t_stack *list);
+int		ft_list_size(t_stack **list);
 
 /* --- Operazioni --- */
 void	init_moves(t_stack **node);
@@ -128,6 +129,7 @@ int	*create_sub_array(t_stack *stack, int tail);
 void	ft_circular_lis(t_lis **stack_lis);
 t_lis	*index_lis_init(t_stack **stack, int size_stack);
 t_lis	*ft_last_lis(t_lis *list);
-int	*find_best_lis(t_lis **lis, int i, int tail);
+int	*find_best_lis(t_lis **lis, int diff, int tail, int size);
+t_lis	*ft_find_in_lis(t_lis **lis, int index, int size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:44 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 18:31:18 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/29 12:27:53 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	push_biggest(t_stack **stack_a, t_stack **stack_b)
 		a = a->next;
 		i++;
 	}
-	if (i <= ft_list_size(*stack_a) / 2)
+	if (i <= ft_list_size(stack_a) / 2)
 	{
 		while (--i >= 0)
 			ra(stack_a);
 	}
 	else
 	{
-		while (++i <= ft_list_size(*stack_a))
+		while (++i <= ft_list_size(stack_a))
 			rra(stack_a);
 	}
 	pb(stack_b, stack_a);

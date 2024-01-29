@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:34:22 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/26 19:27:51 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/29 16:14:03 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	*build_array(int *length, int *array, int *sub_sequence, int size)
 		u = sub_sequence[u];
 		p--;
 	}
-	//free length e sub_sequence
 	return (ret);
 }
 
@@ -112,8 +111,7 @@ void ft_list_lis(t_stack **stack, int size)
 	t_stack	*substack_head;
 	t_stack	*substack_tail;
 
-
-	k = ft_list_size(*stack);
+	k = ft_list_size(stack);
 	j = 0;
 	tmp = ft_lis(create_array(*stack, size), size, 1, 0);
 	stack_tmp = *stack;
@@ -149,15 +147,3 @@ void ft_list_lis(t_stack **stack, int size)
 	}
 	printf("\n\n");
 }
-
-// void find_best_lis(t_stack **stack, int size)
-// {
-// 	t_stack *stack_tmp;
-	
-// 	stack_tmp = *stack;
-// 	while (stack_tmp)
-// 	{
-// 		ft_list_lis(stack, size);
-// 		stack_tmp = stack_tmp->next;
-// 	}
-// }
