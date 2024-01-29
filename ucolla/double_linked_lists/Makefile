@@ -27,7 +27,7 @@ FILES_LIST:= lib_dll/ft_create_list \
 				sorting_fts/ft_sort_five \
 				sorting_fts/create_array \
 				sorting_fts/ft_lis \
-				sorting_fts/ft_list_lis \
+				sorting_fts/circular_list \
 				sorting_fts/push_b_to_a \
 				sorting_fts/push_a_to_b \
 				push_swap_utils \

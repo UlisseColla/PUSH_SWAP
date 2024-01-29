@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:18:02 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/29 16:15:04 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:02:59 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,23 @@ t_lis	*ft_find_in_lis(t_lis **lis, int index, int size)
 	while (i < size)
 	{
 		if (tmp->index == index)
+			return (tmp);
+		tmp = tmp->next;
+		i++;
+	}
+	return (NULL);
+}
+
+t_lis	*ft_find_lis_index(t_lis **lis, int lis_index, int size)
+{
+	t_lis	*tmp;
+	int		i;
+
+	tmp = *lis;
+	i = 0;
+	while (i < size)
+	{
+		if (tmp->lis_index == lis_index)
 			return (tmp);
 		tmp = tmp->next;
 		i++;
@@ -74,6 +91,7 @@ t_lis	*index_lis_init(t_stack **stack, int size_stack)
 		new = ft_node_lis(0);
 		new->index = (*stack)->index;
 		new->lis_index = i;
+		new->sub_sequence = 0;
 		ft_addback_lis(&lis, new);
 		i++;
 		*stack = (*stack)->next;
@@ -81,16 +99,34 @@ t_lis	*index_lis_init(t_stack **stack, int size_stack)
 	return (lis);
 }
 
+void	refresh_lis(t_lis **lis, int stack_size)
+{
+	int i;
+
+	i = 0;
+	while (i < stack_size)
+	{
+		(*lis)->length = 1;
+		(*lis)->lis_index = i;
+		(*lis)->sub_sequence = 0;
+		i++;
+		*lis = (*lis)->next;
+	}
+}
+
 t_lis	*ft_last_lis(t_lis *list)
 {
+	int	head;
+
+	head = list->index;
 	if (!list)
 		return (NULL);
-	while (list->next)
+	while (list->next && list->next->index != head)
 		list = list->next;
 	return (list);
 }
 
-void	ft_circular_lis(t_lis **stack_lis)
+int	*ft_circular_lis(t_lis **stack_lis, int stack_size)
 {
 	t_lis	*tmp;
 	t_lis	*i;
@@ -101,8 +137,12 @@ void	ft_circular_lis(t_lis **stack_lis)
 	i = *stack_lis;
 	i = i->next;
 	j = *stack_lis;
+	int	print = 0;
 	head = tmp->index;
 	ft_last_lis(tmp)->next = tmp;
+	refresh_lis(stack_lis, stack_size);
+	// printf("length: %d, index: %d -- %d, sub_sequence: %d\n", j->length, j->index, print, j->sub_sequence);
+	print++;
 	while (i->index != head)
 	{
 		j = *stack_lis;
@@ -111,12 +151,44 @@ void	ft_circular_lis(t_lis **stack_lis)
 			if (j->index < i->index)
 			{
 				if (j->length == i->length)
+				{
 					i->length = j->length + 1;
+					i->sub_sequence = j->lis_index;
+				}
 			}
 			j = j->next;
 		}
+		// printf("length: %d, index: %d -- %d, sub_sequence: %d\n", i->length, i->index, print, i->sub_sequence);
+		print++;
 		i = i->next;
 	}
+	return (build_lis(stack_lis, stack_size));
+}
+
+int	*build_lis(t_lis **lis, int size)
+{
+	int	*ret;
+	int	biggest_length;
+	int	p;
+	int	u;
+
+	biggest_length = find_biggest_length(*lis, size);
+	ret = (int *)malloc(sizeof(int) * (biggest_length + 1));
+	p = biggest_length;
+	u = find_biggest_length_node(*lis, size, biggest_length)->sub_sequence;
+	ret[p] = -1;
+	p--;
+	ret[p] = find_biggest_length_node(*lis, size, biggest_length)->index;
+	printf("ret[%d]: %d\n", p, ret[p]);
+	p--;
+	while (p >= 0)
+	{
+		ret[p] = ft_find_lis_index(lis, u, size)->index;
+		printf("ret[%d]: %d\n", p, ret[p]);
+		u = ft_find_lis_index(lis, u, size)->sub_sequence;
+		p--;
+	}
+	return (ret);
 }
 
 int	find_biggest_length(t_lis *lis, int size)
@@ -133,15 +205,32 @@ int	find_biggest_length(t_lis *lis, int size)
 	{
 		current_value = tmp->length;
 		if (current_value > max_value)
-		{
 			max_value = current_value;
-		}
 		tmp = tmp->next;
 		i++;
 	}
 	if (tmp->length > max_value)
 		max_value = tmp->length;
 	return (max_value);
+}
+
+t_lis	*find_biggest_length_node(t_lis *lis, int size, int length_to_search)
+{
+	int		i;
+	t_lis	*tmp;
+
+	tmp = lis;
+	i = 0;
+	while (i < size)
+	{
+		if (tmp->length == length_to_search)
+			return (tmp);
+		tmp = tmp->next;
+		i++;
+	}
+	if (tmp->length == length_to_search)
+		return (tmp);
+	return (NULL);
 }
 /*
 //trova differenza tra elemento dove sono e il prossimo con legnth + 1

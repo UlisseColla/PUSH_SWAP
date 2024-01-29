@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:41:00 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/29 16:09:31 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:02:12 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	t_stack *a;
 	t_stack *b;
 	
-	int file = open("ARGS_500", O_RDONLY, 0666);
+	int file = open("ARGS_2", O_RDONLY, 0666);
 	(void)argv;
 	if (check_input(get_next_line(file)) == 1 || argc < 0)
 	{
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		int file = open("ARGS_500", O_RDONLY, 0666);
+		int file = open("ARGS_2", O_RDONLY, 0666);
 		a = ft_create_list(get_next_line(file));
 	}
 	b = NULL;
@@ -36,18 +36,29 @@ int main(int argc, char **argv)
 	t_stack *c = a;
 	int list_size = ft_list_size(&c);
 	
-	/* t_lis *lis = index_lis_init(&a, list_size);
-	int tmp = ft_last_lis(lis)->index;
-	ft_circular_lis(&lis);
-
-	while (lis->index != tmp)
+	t_lis *lis = index_lis_init(&a, list_size);
+	// int tmp = ft_last_lis(lis)->index;
+	int y = 0;
+	t_lis *tmp_lis = NULL;
+	int u = 0;
+	while (y < list_size)
 	{
-		printf("%d ", lis->length);
+		u = 0;
+		tmp_lis = lis;
+		printf("head: %d -- tail: %d\n", tmp_lis->index, ft_last_lis(tmp_lis)->index);
+		ft_circular_lis(&tmp_lis, list_size);
+		while (u < list_size)
+		{
+			// printf("%d ", tmp_lis->length);
+			tmp_lis = tmp_lis->next;
+			u++;
+		}
+		printf("biggest_length: %d\n", find_biggest_length(tmp_lis, list_size));
+		printf("\n");
 		lis = lis->next;
+		y++;
 	}
-	printf("%d ", lis->length);
-	lis = lis->next;
-	printf("\n"); */
+	printf("\n");
 	
 	/* int		*path;
 	path = ft_lis(create_array(a, list_size), list_size, 1, 0);
@@ -60,7 +71,7 @@ int main(int argc, char **argv)
 	}
 	printf("\n"); */
 
-	ft_list_lis(&a, list_size);
+	// ft_list_lis(&a, list_size);
 	
 	// index_push_init(a, path);
 	//free path
@@ -75,7 +86,6 @@ int main(int argc, char **argv)
 	// show_stack(&a);
 	// ft_printf("STACK_B\n");
 	// show_stack(&b);
-	// long size = ft_list_size(b);
 	
 
 	return (0);

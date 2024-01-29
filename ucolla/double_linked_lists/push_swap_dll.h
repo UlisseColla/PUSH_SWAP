@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/29 12:35:50 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/29 18:54:47 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_lis
 	int						length;
 	int						index;
 	int						lis_index;
+	int						sub_sequence;
 	bool					has_index;
 	struct s_lis			*next;
 }	t_lis;
@@ -126,10 +127,13 @@ int		arr_biggest(int *array, int size);
 void ft_list_lis(t_stack **stack, int size);
 t_stack	*ft_list_find_index(t_stack *list, int index);
 int	*create_sub_array(t_stack *stack, int tail);
-void	ft_circular_lis(t_lis **stack_lis);
+int	*ft_circular_lis(t_lis **stack_lis, int stack_size);
 t_lis	*index_lis_init(t_stack **stack, int size_stack);
 t_lis	*ft_last_lis(t_lis *list);
 int	*find_best_lis(t_lis **lis, int diff, int tail, int size);
 t_lis	*ft_find_in_lis(t_lis **lis, int index, int size);
+int	*build_lis(t_lis **lis, int size);
+int	find_biggest_length(t_lis *lis, int size);
+t_lis	*find_biggest_length_node(t_lis *lis, int size, int length_to_search);
 
 #endif
