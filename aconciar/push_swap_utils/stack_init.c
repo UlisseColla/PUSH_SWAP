@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:14:24 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/23 17:38:01 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:32:47 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	stack_init(int argc, char *argv[], t_stack **stack_a)
 		if_just_one_arg(argv, stack_a);
 	}
 	else if (argc < 2)
-		return (0);
+		return (1);
 	else
 		return (if_more_than_one_arg(argv, stack_a, 0, 0));
 	return (0);
