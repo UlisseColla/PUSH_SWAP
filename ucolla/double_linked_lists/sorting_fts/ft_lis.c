@@ -6,11 +6,13 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:34:22 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/29 16:14:03 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:25:49 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap_dll.h"
+
+/* ricerca della LIS senza lista circolare, passando un array con tutti i valore index presa dallo stack A */
 
 static void	init_one(int *array, int size)
 {

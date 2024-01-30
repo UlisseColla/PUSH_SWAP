@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/29 18:54:47 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:47:40 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,30 @@ int		find_smallest_after_index(t_stack *stack, int index);
 int		find_biggest_before_index(t_stack *stack, int index);
 void	check_efficiency(t_stack *stack_a, t_stack *stack_b, t_operator *value);
 
-/* LIS */
+/* LIS non circolare */
 int		*create_array(t_stack *stack, int size);
 int		*ft_lis(int *array, int size, int i, int j);
 int		*build_array(int *length, int *array, int *sub_sequence, int size);
 int		ft_index(int *args, int num);
 int		arr_biggest(int *array, int size);
+
+/* LIS CIRCOLARE */
+
+/* circular_lis_utils */
+t_lis	*ft_node_lis(int index);
+t_lis	*ft_last_lis(t_lis *list);
+t_lis	*ft_find_in_lis(t_lis **lis, int index, int size);
+t_lis	*ft_find_lis_index(t_lis **lis, int lis_index, int size);
+void	ft_addback_lis(t_lis **list, t_lis *new);
+/* lis_utils */
+t_lis	*find_biggest_length_node(t_lis *lis, int size, int length_to_search);
+int	find_biggest_length(t_lis *lis, int size);
+/* circular_list */
+t_lis	*index_lis_init(t_stack **stack, int size_stack);
+void	refresh_lis(t_lis **lis, int stack_size);
+int		*ft_circular_lis(t_lis **stack_lis, int stack_size);
+int		*build_lis(t_lis **lis, int size);
+
 
 /* TMP */
 void ft_list_lis(t_stack **stack, int size);
