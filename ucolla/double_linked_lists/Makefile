@@ -34,6 +34,8 @@ FILES_LIST:= lib_dll/ft_create_list \
 				push_swap_utils \
 				find_functions \
 				index_stack \
+				initialize_stack \
+				initialize_stack_utils \
 				check_input \
 				sorting \
 				main \

@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/30 15:58:32 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/30 18:14:48 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ int		check_input(char *str);
 void	free_mat(char **mat);
 // int		arr_find_biggest(int *array);
 void	free_mat_long(int **mat);
+
+/* initialize_stack */
+int		initialize_stack(t_stack **stack, char **argv, int argc);
+int		*find_longest_lis(t_lis **lis, int list_size);
+char	*ft_strjoin_ps(char *s1, char *s2);
 
 /* --- Sorting --- */
 void	ft_sort_three(t_stack **stack);

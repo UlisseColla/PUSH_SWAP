@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:03:33 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 18:32:21 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/30 18:31:46 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,6 @@ int	find_biggest(t_stack *stack)
 	return (max_value);
 }
 
-/* int	arr_find_biggest(int *array)
-{
-	int		max_value;
-	int		current_value;
-	int		i;
-
-	max_value = INT_MIN;
-	i = 0;
-	while (array[i])
-	{
-		current_value = array[i];
-		if (current_value > max_value)
-			max_value = current_value;
-		i++;
-	}
-	return (max_value);
-} */
-
 int	check_order(t_stack *stack)
 {
 	while (stack->next)
@@ -100,33 +82,8 @@ void	show_stack(t_stack **stack)
 	tmp = *stack;
 	while (tmp)
 	{
-		printf("stack: %d --> %d, push: %d\n", tmp->value, tmp->index, tmp->push);
+		printf("stack: %d, push: %d\n", tmp->index, tmp->push);
 		tmp = tmp->next;
 	}
 	ft_printf("\n");
-}
-
-long	array_size(long *array)
-{
-	long	i;
-
-	if (array == NULL)
-		return (0);
-	i = 0;
-	while (array[i] != (long)INT_MAX + 1)
-		i++;
-	return (i);
-}
-
-void	free_mat_long(int **mat)
-{
-	int	y;
-
-	y = 0;
-	while (mat[y])
-	{
-		free(mat[y]);
-		y++;
-	}
-	free(mat);
 }

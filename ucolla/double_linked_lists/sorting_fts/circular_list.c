@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:18:02 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/30 15:56:18 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/30 18:48:26 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@ t_lis	*index_lis_init(t_stack **stack, int size_stack)
 	int		i;
 	t_lis	*lis;
 	t_lis	*new;
+	t_stack	*tmp;
 
 	i = 0;
 	lis = NULL;
+	tmp = *stack;
 	while (i < size_stack)
 	{
 		new = ft_node_lis(0);
-		new->index = (*stack)->index;
+		new->index = tmp->index;
 		new->lis_index = i;
 		new->sub_sequence = 0;
 		ft_addback_lis(&lis, new);
 		i++;
-		*stack = (*stack)->next;
+		tmp = tmp->next;
 	}
 	return (lis);
 }
@@ -37,7 +39,7 @@ t_lis	*index_lis_init(t_stack **stack, int size_stack)
 /* resetta valori a tutta la lista lis */
 void	refresh_lis(t_lis **lis, int stack_size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < stack_size)
@@ -56,7 +58,7 @@ int	*ft_circular_lis(t_lis **stack_lis, int stack_size)
 	t_lis	*i;
 	t_lis	*j;
 	int		head;
-	
+
 	i = (*stack_lis)->next;
 	j = *stack_lis;
 	head = (*stack_lis)->index;
@@ -97,12 +99,10 @@ int	*build_lis(t_lis **lis, int size)
 	ret[p] = -1;
 	p--;
 	ret[p] = find_biggest_length_node(*lis, size, biggest_length)->index;
-	// printf("ret[%d]: %d\n", p, ret[p]);
 	p--;
 	while (p >= 0)
 	{
 		ret[p] = ft_find_lis_index(lis, u, size)->index;
-		// printf("ret[%d]: %d\n", p, ret[p]);
 		u = ft_find_lis_index(lis, u, size)->sub_sequence;
 		p--;
 	}
