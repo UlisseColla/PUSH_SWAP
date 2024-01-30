@@ -26,8 +26,9 @@ FILES_LIST:= lib_dll/ft_create_list \
 				sorting_fts/ft_sort_three \
 				sorting_fts/ft_sort_five \
 				sorting_fts/create_array \
-				sorting_fts/ft_lis \
 				sorting_fts/circular_list \
+				sorting_fts/circular_list_utils \
+				sorting_fts/lis_utils \
 				sorting_fts/push_b_to_a \
 				sorting_fts/push_a_to_b \
 				push_swap_utils \
@@ -36,6 +37,7 @@ FILES_LIST:= lib_dll/ft_create_list \
 				check_input \
 				sorting \
 				main \
+#				sorting_fts/ft_lis \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))
 

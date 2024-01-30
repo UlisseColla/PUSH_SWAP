@@ -6,13 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:14:04 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 17:19:10 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/30 16:04:17 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_dll.h"
-
-
 
 /* int	find_smallest(t_stack *stack)
 {

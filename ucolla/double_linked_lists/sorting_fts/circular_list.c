@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:18:02 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/30 15:41:07 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:56:18 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	*ft_circular_lis(t_lis **stack_lis, int stack_size)
 	t_lis	*j;
 	int		head;
 	
-	i = *stack_lis->next;
+	i = (*stack_lis)->next;
 	j = *stack_lis;
 	head = (*stack_lis)->index;
 	ft_last_lis(*stack_lis)->next = *stack_lis;
