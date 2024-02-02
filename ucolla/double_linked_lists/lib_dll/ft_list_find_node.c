@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:49:12 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/25 19:09:49 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 10:50:48 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "../push_swap.h"
 
 t_stack	*ft_list_find_node(t_stack *list, int value)
 {

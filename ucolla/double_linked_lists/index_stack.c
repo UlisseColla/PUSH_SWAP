@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:26:15 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/29 12:30:44 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/02 16:09:00 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "push_swap.h"
 
 static int	index_find_smallest(t_stack **stack)
 {
@@ -34,17 +34,22 @@ void	index_stack_init(t_stack **stack)
 {
 	int		i;
 	int		j;
+	int		c;
 	int		smallest;
 	t_stack	*b;
 
 	i = 1;
 	j = ft_list_size(stack);
 	b = *stack;
+	c = 1;
 	while (i <= j)
 	{
 		smallest = index_find_smallest(&b);
 		ft_list_find_node(b, smallest)->index = i;
 		ft_list_find_node(b, smallest)->has_index = true;
+		ft_list_find_node(b, smallest)->chunk = c;
+		if (i == ft_list_size(stack) / 2)
+			c++;
 		i++;
 	}
 }
@@ -53,17 +58,17 @@ void	index_push_init(t_stack *stack, int *lis)
 {
 	t_stack	*tmp;
 	int		i;
-	
+
 	tmp = stack;
 	i = 0;
 	while (tmp)
 	{
 		i = 0;
-		tmp->push = true;
+		tmp->push = 0;
 		while (lis[i] != -1)
 		{
 			if (lis[i] == tmp->index)
-				tmp->push = false;
+				tmp->push = 1;
 			i++;
 		}
 		tmp = tmp->next;

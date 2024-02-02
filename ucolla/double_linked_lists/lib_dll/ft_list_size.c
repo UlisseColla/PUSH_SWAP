@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:44:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/29 12:26:30 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 10:50:43 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "../push_swap.h"
 
 int	ft_list_size(t_stack **list)
 {

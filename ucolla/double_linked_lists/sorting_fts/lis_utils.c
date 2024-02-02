@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:40:20 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/30 15:40:45 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 10:49:57 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "../push_swap.h"
 
 /* trova valore length piu' grande */
 int	find_biggest_length(t_lis *lis, int size)

@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:08:15 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/30 18:10:56 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/02 16:29:49 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "push_swap.h"
 
 char	*ft_strjoin_ps(char *s1, char *s2)
 {
@@ -36,4 +36,21 @@ char	*ft_strjoin_ps(char *s1, char *s2)
 	ret[a] = '\0';
 	free(s1);
 	return (ret);
+}
+
+void	ft_free_matrix_lis(int **matrix, int size)
+{
+	int	i;
+
+	if (matrix == NULL || *matrix == NULL)
+		return ;
+	i = 0;
+	while (i < size)
+	{
+		free(matrix[i]);
+		matrix[i] = NULL;
+		i++;
+	}
+	// free(matrix);
+	// matrix[i] = NULL;
 }

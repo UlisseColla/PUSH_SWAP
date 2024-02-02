@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:51:04 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/24 17:14:19 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 11:10:32 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "../push_swap.h"
 
 t_stack	*ft_create_list(char *str_args)
 {
@@ -25,7 +25,7 @@ t_stack	*ft_create_list(char *str_args)
 	while (args[i])
 	{
 		new = ft_create_node(ft_atoi(args[i]));
-		new->push = false;
+		new->push = 1;
 		new->has_index = false;
 		if (new == NULL)
 		{

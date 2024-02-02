@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_dll.h                                    :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:37:03 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/30 18:14:48 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/02 19:31:56 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_DLL_H
-# define PUSH_SWAP_DLL_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-# include "../libft/libft.h"
-# include "../libft/get_next_line/get_next_line.h"
-# include "../ft_printf/ft_printf.h"
+# include "./libft/libft.h"
+# include "./libft/get_next_line/get_next_line.h"
+# include "./ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
@@ -25,9 +25,9 @@ typedef struct t_double_node
 {
 	int						value;
 	int						index;
+	int						push;
+	int						chunk;
 	bool					has_index;
-	bool					push;
-	struct t_operations		*ops;
 	struct t_double_node	*next;
 	struct t_double_node	*prev;
 }	t_stack;
@@ -65,9 +65,6 @@ void	ft_list_addfront(t_stack **list, t_stack *new);
 void	ft_list_addback(t_stack **list, t_stack *new);
 int		ft_list_size(t_stack **list);
 
-/* --- Operazioni --- */
-void	init_moves(t_stack **node);
-
 /* Push */
 void	pa(t_stack **stack, t_stack **node);
 void	pb(t_stack **stack, t_stack **node);
@@ -87,46 +84,35 @@ void	rrr(t_stack **stack_a, t_stack **stack_b);
 /* --- Logica --- */
 
 /* Utils */
-int		find_smallest(t_stack *stack);
-int		find_biggest(t_stack *stack);
-int		check_order(t_stack *stack);
+void	push_smallest(t_stack **stack_a, t_stack **stack_b);
 void	index_stack_init(t_stack **stack);
 void	index_push_init(t_stack *stack, int *lis);
 void	show_stack(t_stack **stack);
-void	push_biggest(t_stack **stack_a, t_stack **stack_b);
-int		check_input(char *str);
 void	free_mat(char **mat);
-// int		arr_find_biggest(int *array);
-void	free_mat_long(int **mat);
+int		find_smallest(t_stack *stack);
+int		find_biggest(t_stack *stack);
+int		check_order(t_stack **stack);
+int		check_input(char *str);
 
 /* initialize_stack */
-int		initialize_stack(t_stack **stack, char **argv, int argc);
-int		*find_longest_lis(t_lis **lis, int list_size);
+void	ft_free_matrix_lis(int **matrix, int size);
 char	*ft_strjoin_ps(char *s1, char *s2);
+int		initialize_stack(t_stack **stack, char **argv, int argc);
+int		*find_longest_lis(t_lis **lis, int list_size, int counter, int current_value);
 
 /* --- Sorting --- */
-void	ft_sort_three(t_stack **stack);
-void	ft_sort_five(t_stack **stack_a, t_stack **stack_b);
-// void	push_in_b(t_stack **stack_a, t_stack **stack_b);
-// void	push_in_a(t_stack **a, t_stack **b);
-
-int		find_eff(t_stack *stack, int index);
-int		find_value(t_stack *stack, int value);
+void	ft_three_numbers(t_stack **stack_a);
+void	ft_five_numbers(t_stack **stack_a, t_stack **stack_b);
+void	sorting(t_stack **stack_a, t_stack **stack_b);
 void	push_a_to_b(t_stack **stack_a, t_stack **stack_b);
 void	push_b_to_a(t_stack **stack_a, t_stack **stack_b);
-int		find_smallest_after_index(t_stack *stack, int index);
 void	efficiency_counter(t_stack *stack_a, t_stack *stack_b, int index, t_operator **value);
+void	check_efficiency(t_stack *stack_a, t_stack *stack_b, t_operator *value);
+int		find_eff(t_stack *stack, int index);
+int		find_value(t_stack *stack, int value);
 int		efficiency_counter_no_save(t_stack *stack_a, t_stack *stack_b, int index);
 int		find_smallest_after_index(t_stack *stack, int index);
 int		find_biggest_before_index(t_stack *stack, int index);
-void	check_efficiency(t_stack *stack_a, t_stack *stack_b, t_operator *value);
-
-/* LIS non circolare */
-/* int		*create_array(t_stack *stack, int size);
-int		*ft_lis(int *array, int size, int i, int j);
-int		*build_array(int *length, int *array, int *sub_sequence, int size);
-int		ft_index(int *args, int num);
-int		arr_biggest(int *array, int size); */
 
 /* LIS CIRCOLARE */
 
@@ -138,7 +124,8 @@ t_lis	*ft_find_lis_index(t_lis **lis, int lis_index, int size);
 void	ft_addback_lis(t_lis **list, t_lis *new);
 /* lis_utils */
 t_lis	*find_biggest_length_node(t_lis *lis, int size, int length_to_search);
-int	find_biggest_length(t_lis *lis, int size);
+void	ft_free_lis(t_lis *lis, int head_lis);
+int		find_biggest_length(t_lis *lis, int size);
 /* circular_list */
 t_lis	*index_lis_init(t_stack **stack, int size_stack);
 void	refresh_lis(t_lis **lis, int stack_size);
@@ -146,16 +133,16 @@ int		*ft_circular_lis(t_lis **stack_lis, int stack_size);
 int		*build_lis(t_lis **lis, int size);
 
 /* TMP */
-void ft_list_lis(t_stack **stack, int size);
 t_stack	*ft_list_find_index(t_stack *list, int index);
-int	*create_sub_array(t_stack *stack, int tail);
-int	*ft_circular_lis(t_lis **stack_lis, int stack_size);
 t_lis	*index_lis_init(t_stack **stack, int size_stack);
 t_lis	*ft_last_lis(t_lis *list);
-int	*find_best_lis(t_lis **lis, int diff, int tail, int size);
 t_lis	*ft_find_in_lis(t_lis **lis, int index, int size);
-int	*build_lis(t_lis **lis, int size);
-int	find_biggest_length(t_lis *lis, int size);
 t_lis	*find_biggest_length_node(t_lis *lis, int size, int length_to_search);
+void 	ft_list_lis(t_stack **stack, int size);
+int		*create_sub_array(t_stack *stack, int tail);
+int		*ft_circular_lis(t_lis **stack_lis, int stack_size);
+int		*find_best_lis(t_lis **lis, int diff, int tail, int size);
+int		*build_lis(t_lis **lis, int size);
+int		find_biggest_length(t_lis *lis, int size);
 
 #endif
