@@ -3,16 +3,18 @@ CC:= cc
 
 NAME:= push_swap
 
-PATH_LIBFT:= ../libft
+PATH_LIBFT:= libft
 LIBFT:= libft.a
 
-PATH_GNL:= ../libft/get_next_line
+PATH_GNL:= libft/get_next_line
 GNL:= get_next_line.a
 
-PATH_PRINTF:= ../ft_printf
+PATH_PRINTF:= ft_printf
 FT_PRINTF:= libftprintf.a
 
-FILES_LIST:= lib_dll/ft_create_list \
+FILES_LIST:= check_efficiency/check_efficiency_no_save \
+				check_efficiency/check_efficiency \
+				lib_dll/ft_create_list \
 				lib_dll/ft_create_node \
 				lib_dll/ft_free_list \
 				lib_dll/ft_list_size \
@@ -23,23 +25,22 @@ FILES_LIST:= lib_dll/ft_create_list \
 				operations/op_rev_rotate \
 				operations/op_rotate \
 				operations/op_swap_and_push \
-				sorting_fts/ft_sort_three \
-				sorting_fts/ft_sort_five \
+				sorting_fts/ft_three_numbers \
+				sorting_fts/ft_five_numbers \
 				sorting_fts/create_array \
 				sorting_fts/circular_list \
 				sorting_fts/circular_list_utils \
 				sorting_fts/lis_utils \
 				sorting_fts/push_b_to_a \
 				sorting_fts/push_a_to_b \
+				sorting_fts/sorting \
 				push_swap_utils \
 				find_functions \
 				index_stack \
 				initialize_stack \
 				initialize_stack_utils \
 				check_input \
-				sorting \
 				main \
-#				sorting_fts/ft_lis \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))
 

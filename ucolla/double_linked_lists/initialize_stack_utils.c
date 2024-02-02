@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:08:15 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/30 18:10:56 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 10:49:18 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "push_swap.h"
 
 char	*ft_strjoin_ps(char *s1, char *s2)
 {

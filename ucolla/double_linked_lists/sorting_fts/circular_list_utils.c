@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:27:36 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/30 18:47:33 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 10:50:13 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "../push_swap.h"
 
 /* crea nodo lis */
 t_lis	*ft_node_lis(int index)

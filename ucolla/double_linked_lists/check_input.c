@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:59:54 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/12 12:07:46 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 10:49:31 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_dll.h"
+#include "push_swap.h"
 
 void	free_mat(char **mat)
 {

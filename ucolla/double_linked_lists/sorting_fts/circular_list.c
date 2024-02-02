@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:18:02 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/30 18:48:26 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 17:02:12 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "../push_swap.h"
 
 /* assegna lis_index a tutta la lista lis */
 t_lis	*index_lis_init(t_stack **stack, int size_stack)
@@ -107,4 +107,17 @@ int	*build_lis(t_lis **lis, int size)
 		p--;
 	}
 	return (ret);
+}
+
+void	ft_free_lis(t_lis *lis, int head_lis)
+{
+	t_lis	*tmp;
+
+	while (lis->index != head_lis)
+	{
+		tmp = lis->next;
+		free(lis);
+		lis = tmp;
+	}
+	free(lis);
 }

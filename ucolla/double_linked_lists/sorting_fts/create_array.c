@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:22:11 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/29 12:28:38 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 10:50:08 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "../push_swap.h"
 
 /* Creazione di array degli int passati come argomento a push_swap */
 int	*create_array(t_stack *stack, int size)

@@ -5,44 +5,67 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 16:16:59 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/29 12:30:09 by ucolla           ###   ########.fr       */
+/*   Created: 2024/01/23 19:15:40 by aconciar          #+#    #+#             */
+/*   Updated: 2024/01/31 13:58:58 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "../push_swap.h"
 
-void	ft_else(t_stack **stack_a, t_stack **stack_b)
+void	r_operations_b(t_stack **stack_b, t_stack **stack_a, t_operator operator)
 {
-	if (find_value(*stack_a, (*stack_b)->index + 1) == 1)
-		while ((*stack_a)->index != (*stack_b)->index + 1)
-		{
-			if (find_eff(*stack_a, (*stack_b)->index + 1) > (ft_list_size(stack_a) / 2))
-				rra(stack_a);
-			else
-				ra(stack_a);
-		}
-	else
-		while ((*stack_b)->index > (*stack_a)->index)
-		{
-			if (find_eff(*stack_a, find_biggest_before_index(*stack_a, (*stack_b)->index)) > (ft_list_size(stack_a) / 2))
-				rra(stack_a);
-			else
-				ra(stack_a);
-		}
+	while (operator.rr > 0)
+	{
+		rr(stack_a, stack_b);
+		operator.rr--;
+	}
+	while (operator.rb > 0)
+	{
+		rb(stack_b);
+		operator.rb--;
+	}
+	while (operator.ra > 0)
+	{
+		ra(stack_a);
+		operator.ra--;
+	}
 }
 
-void	push_b_to_a(t_stack **stack_a, t_stack **stack_b)
+void	rr_operations_b(t_stack **stack_b, t_stack **stack_a, t_operator operator)
 {
-	if ((*stack_b)->index > find_biggest(*stack_a) || (*stack_b)->index < find_smallest(*stack_a))
-		while (ft_list_last(*stack_a)->index != find_biggest(*stack_a))
-		{
-			if (find_eff(*stack_a, find_biggest(*stack_a)) > (ft_list_size(stack_a) / 2))
-				rra(stack_a);
-			else
-				ra(stack_a);
-		}
-	else
-		ft_else(stack_a, stack_b);
+	while (operator.rrr > 0)
+	{
+		rrr(stack_a, stack_b);
+		operator.rrr--;
+	}
+	while (operator.rrb > 0)
+	{
+		rrb(stack_b);
+		operator.rrb--;
+	}
+	while (operator.rra > 0)
+	{
+		rra(stack_a);
+		operator.rra--;
+	}
+}
+
+void	push_b_to_a(t_stack **stack_b, t_stack **stack_a)
+{
+	t_operator operator;
+
+	check_efficiency(*stack_b, *stack_a, &operator);
+	// ft_printf("operator.rr : %d\n", operator.rr);
+	// ft_printf("operator.ra : %d\n", operator.ra);
+	// ft_printf("operator.rb : %d\n", operator.rb);
+	// ft_printf("operator.rrr : %d\n", operator.rrr);
+	// ft_printf("operator.rra : %d\n", operator.rra);
+	// ft_printf("operator.rrb : %d\n", operator.rrb);
+	r_operations_b(stack_b, stack_a, operator);
+	rr_operations_b(stack_b, stack_a, operator);
+	// ft_printf("STACK_B\n");
+	// show_stack(stack_b);
 	pa(stack_a, stack_b);
+	if ((*stack_a)->index == find_biggest(*stack_a))
+		ra(stack_a);
 }

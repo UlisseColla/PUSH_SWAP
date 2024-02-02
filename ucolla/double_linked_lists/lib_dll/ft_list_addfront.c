@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:47:13 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/10 16:09:32 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/31 10:50:50 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_dll.h"
+#include "../push_swap.h"
 
 /* Aggiungo un elemento all'inizio della lista, passando un pointer ad essa */
 
