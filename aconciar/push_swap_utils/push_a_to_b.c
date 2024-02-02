@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:13:37 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/25 15:40:19 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:14:23 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,12 @@ void	push_a_to_b(t_stack **stack_a, t_stack **stack_b)
 		else
 			ra(stack_a);
 	}
-	pb(stack_b, stack_a);
+	if ((*stack_a)->chunk == 2)
+		pb(stack_b, stack_a);
+	else
+	{
+		pb(stack_b, stack_a);
+		if (ft_list_size(*stack_b) > 1)
+			rb(stack_b);
+	}
 }

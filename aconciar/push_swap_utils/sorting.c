@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 18:05:05 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/25 16:15:32 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:53:22 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int ft_check_push(t_stack *stack)
 	while (stack)
 	{
 		if (stack->push == 0)
-			return (1);
+			return (0);
 		stack = stack->next;
 	}
-	return (0);
+	return (1);
 }
 
 int	find_eff(t_stack *stack, int index)
@@ -52,23 +52,7 @@ int	find_eff(t_stack *stack, int index)
 
 void	sorting(t_stack **stack_a, t_stack **stack_b)
 {
-	if ((*stack_a)->push == 0)
-		pb(stack_b, stack_a);
-	else
-	{
-		while ((*stack_a)->push != 0)
-			ra(stack_a);
-		pb(stack_b, stack_a);
-	}
-	if ((*stack_a)->push == 0)
-		pb(stack_b, stack_a);
-	else
-	{
-		while ((*stack_a)->push == 1)
-			ra(stack_a);
-		pb(stack_b, stack_a);
-	}
-	while (ft_check_push(*stack_a) == 1)
+	while (ft_check_push(*stack_a) != 1)
 		push_a_to_b(stack_a, stack_b);
 	ft_smallest_on_top(stack_a);
 	while ((*stack_b)->next)

@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:34:02 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:46:52 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:55:55 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char *argv[])
 		three_numbers_a(&stack_a);
 	else if (ft_list_size(stack_a) == 5 && check_order(stack_a) == 1)
 		five_numbers(&stack_a, &stack_b);
-	else if (check_order(stack_a) == 1)
+	if (check_order(stack_a) == 1)
 		sorting(&stack_a, &stack_b);
 	// ft_print_stack(stack_a);
 	// ft_printf("\nSTACK_B\n");
@@ -36,4 +36,3 @@ int	main(int argc, char *argv[])
 	ft_free_list(stack_a);
 	return (0);
 }
-
