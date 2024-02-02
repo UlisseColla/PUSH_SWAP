@@ -6,28 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:10:22 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/01 15:50:46 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/02 19:37:37 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_free_matrix_lis(int **matrix, int size)
-{
-	int	i;
-
-	if (matrix == NULL)
-		return ;
-	i = 0;
-	while (i < size)
-	{
-		free(matrix[i]);
-		matrix[i] = NULL;
-		i++;
-	}
-	free(matrix);
-	matrix[i] = NULL;
-}
 
 static int	array_size(int *array)
 {
@@ -128,7 +111,7 @@ int	*find_longest_lis(t_lis **lis, int list_size, int counter, int current_value
 	return (final_lis);
 }
 
-int	*find_longest_lis_tmp(t_lis **lis, int list_size, int counter, int current_value)
+/* int	*find_longest_lis_tmp(t_lis **lis, int list_size, int counter, int current_value)
 {
 	int	biggest_length;
 	int	*tmp_lis;
@@ -153,14 +136,14 @@ int	*find_longest_lis_tmp(t_lis **lis, int list_size, int counter, int current_v
 		counter++;
 	}
 	return (final_lis);
-}
+} */
 
 int	initialize_stack(t_stack **stack, char **argv, int argc)
 {
-	int		list_size;
-	int		*lis_path;
-	int		head_lis;
 	t_lis	*lis;
+	int		*lis_path;
+	int		list_size;
+	int		head_lis;
 
 	lis = NULL;
 	if (check_argv(argv, argc, stack) == 1)
@@ -170,11 +153,14 @@ int	initialize_stack(t_stack **stack, char **argv, int argc)
 	}
 	list_size = ft_list_size(stack);
 	index_stack_init(stack);
-	lis = index_lis_init(stack, list_size);
-	head_lis = lis->index;
-	lis_path = find_longest_lis(&lis, list_size, 0, 0);
-	index_push_init(*stack, lis_path);
-	ft_free_lis(lis, head_lis);
-	free(lis_path);
+	if (list_size > 5)
+	{
+		lis = index_lis_init(stack, list_size);
+		head_lis = lis->index;
+		lis_path = find_longest_lis(&lis, list_size, 0, 0);
+		index_push_init(*stack, lis_path);
+		ft_free_lis(lis, head_lis);
+		free(lis_path);
+	}
 	return (0);
 }

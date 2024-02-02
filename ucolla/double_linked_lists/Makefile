@@ -27,7 +27,6 @@ FILES_LIST:= check_efficiency/check_efficiency_no_save \
 				operations/op_swap_and_push \
 				sorting_fts/ft_three_numbers \
 				sorting_fts/ft_five_numbers \
-				sorting_fts/create_array \
 				sorting_fts/circular_list \
 				sorting_fts/circular_list_utils \
 				sorting_fts/lis_utils \
@@ -41,6 +40,7 @@ FILES_LIST:= check_efficiency/check_efficiency_no_save \
 				initialize_stack_utils \
 				check_input \
 				main \
+#				sorting_fts/create_array \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))
 

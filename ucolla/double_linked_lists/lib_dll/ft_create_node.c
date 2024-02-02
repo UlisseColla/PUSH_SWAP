@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:42:07 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/31 10:50:58 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/02 19:28:33 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_stack	*ft_create_node(int value)
 	if (new == NULL)
 		return (NULL);
 	new->value = value;
+	new->has_index = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

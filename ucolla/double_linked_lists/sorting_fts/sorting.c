@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 18:05:05 by aconciar          #+#    #+#             */
-/*   Updated: 2024/02/01 18:40:50 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/02 19:38:32 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ int	check_push_condition(t_stack **stack)
 
 void	sorting(t_stack **stack_a, t_stack **stack_b)
 {
-	
-	if ((*stack_a)->push == 0)
+	// pb(stack_b, stack_a);
+	// pb(stack_b, stack_a);
+	/* if ((*stack_a)->push == 0)
 		pb(stack_b, stack_a);
 	else
 	{
@@ -81,10 +82,11 @@ void	sorting(t_stack **stack_a, t_stack **stack_b)
 		while ((*stack_a)->push == 1  && check_push_condition(stack_a) != 1)
 			ra(stack_a);
 		pb(stack_b, stack_a);
-	}
+	} */
 	while (ft_check_push(*stack_a) == 1)
 		push_a_to_b(stack_a, stack_b);
-	ft_smallest_on_top(stack_a);
+	// ft_three_numbers(stack_a);
+	// ft_smallest_on_top(stack_a);
 	while ((*stack_b)->next)
 		push_b_to_a(stack_b, stack_a);
 	push_b_to_a(stack_b, stack_a);

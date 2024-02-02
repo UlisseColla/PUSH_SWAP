@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:33:56 by aconciar          #+#    #+#             */
-/*   Updated: 2024/02/01 17:39:17 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/02 19:17:08 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	push_smallest(t_stack **stack_a, t_stack **stack_b)
 		while (++i <= ft_list_size(stack_a))
 			rra(stack_a);
 	}
-	printf("head_A: %d\n", (*stack_a)->index);
 	pb(stack_b, stack_a);
 }
 

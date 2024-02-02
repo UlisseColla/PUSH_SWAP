@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:26:15 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/01 18:42:59 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/02 16:09:00 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,22 @@ void	index_stack_init(t_stack **stack)
 {
 	int		i;
 	int		j;
+	int		c;
 	int		smallest;
 	t_stack	*b;
 
 	i = 1;
 	j = ft_list_size(stack);
 	b = *stack;
+	c = 1;
 	while (i <= j)
 	{
 		smallest = index_find_smallest(&b);
 		ft_list_find_node(b, smallest)->index = i;
 		ft_list_find_node(b, smallest)->has_index = true;
+		ft_list_find_node(b, smallest)->chunk = c;
+		if (i == ft_list_size(stack) / 2)
+			c++;
 		i++;
 	}
 }
