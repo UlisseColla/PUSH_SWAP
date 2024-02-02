@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:39:39 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/29 16:06:04 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:39:17 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,21 @@
 
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
+# include "../get_next_line/get_next_line.h"
 # include <stdlib.h>
 # include <stdio.h>
-#include <limits.h>
+# include <limits.h>
+# include <stdbool.h>
+
+typedef struct s_lis
+{
+	int						length;
+	int						index;
+	int						lis_index;
+	int						sub_sequence;
+	bool					has_index;
+	struct s_lis			*next;
+}				t_lis;
 
 typedef struct s_operator
 {
@@ -34,6 +46,7 @@ typedef struct s_stack
 	int						value;
 	int						index;
 	int						has_index;
+	int						chunk;
 	int						push;
 	struct s_stack			*next;
 	struct s_stack			*prev;
@@ -50,7 +63,16 @@ t_stack	*ft_list_find_node(t_stack *list, int value);
 int		ft_list_size(t_stack *list);
 int		check_input(char *str);
 int		stack_init(int	argc, char *argv[], t_stack **stack_a);
-int		*ft_lis(int *array, int size, int i, int j);
+t_lis	*index_lis_init(t_stack **stack, int size_stack);
+int		*ft_circular_lis(t_lis **stack_lis, int stack_size);
+int		find_biggest_length(t_lis *lis, int size);
+t_lis	*find_biggest_length_node(t_lis *lis, int size, int length_to_search);
+t_lis	*ft_node_lis(int index);
+void	ft_addback_lis(t_lis **list, t_lis *new);
+t_lis	*ft_last_lis(t_lis *list);
+t_lis	*ft_find_in_lis(t_lis **lis, int index, int size);
+t_lis	*ft_find_lis_index(t_lis **lis, int lis_index, int size);
+int		*build_lis(t_lis **lis, int size);
 void	pa(t_stack **stack, t_stack **node);
 void	pb(t_stack **stack, t_stack **node);
 void	sa(t_stack **stack);

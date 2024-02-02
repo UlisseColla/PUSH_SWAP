@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:02:09 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/25 16:10:12 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:54:33 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	rb_rrb_counter_b(t_stack *stack_b, int index, t_operator **value)
 
 	stack_size = ft_list_size(stack_b);
 	moves = 0;
+	if (stack_b->index == index)
+	{
+		(*value)->rrb = 0;
+		(*value)->rb = 0;
+		return ;
+	}
 	while (stack_b->index != index && stack_b->next)
 	{
 		moves++;

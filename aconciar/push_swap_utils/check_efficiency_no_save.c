@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_efficiency_no_save.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:26:07 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/25 17:35:38 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/01/30 18:54:44 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ void	rb_rrb_counter_b_no_save(t_stack *stack_b, int index, t_operator *operator)
 
 	stack_size = ft_list_size(stack_b);
 	moves = 0;
+	if (stack_b->index == index)
+	{
+		operator->rrb = 0;
+		operator->rb = 0;
+		return ;
+	}
 	while (stack_b->index != index && stack_b->next)
 	{
 		moves++;
@@ -109,7 +115,7 @@ int	efficiency_counter_no_save(t_stack *stack_a, t_stack *stack_b, int index)
 	}
 	r_moves += operator.ra + operator.rb + operator.rr;
 	rr_moves += operator.rra + operator.rrb + operator.rrr;
-	// ft_printf("r_moves : %d\n", r_moves);	
+	// ft_printf("r_moves : %d\n", r_moves);
 	// ft_printf("rr_moves : %d\n",rr_moves);
 	if (r_moves < rr_moves)
 	{
