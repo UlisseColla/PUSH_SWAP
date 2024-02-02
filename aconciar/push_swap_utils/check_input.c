@@ -6,13 +6,13 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:33:56 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/23 17:08:27 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:11:29 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*ft_strjoingnl(char *left_str, char *buff)
+char	*ft_strjoinps(char *left_str, char *buff)
 {
 	size_t	i;
 	size_t	j;

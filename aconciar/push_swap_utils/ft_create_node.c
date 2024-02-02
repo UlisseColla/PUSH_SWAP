@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:42:07 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/12 18:00:57 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:37:40 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_stack	*ft_create_node(int value)
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (new == NULL)
 		return (NULL);
+	new->has_index = 0;
 	new->value = value;
 	new->next = NULL;
 	new->prev = NULL;

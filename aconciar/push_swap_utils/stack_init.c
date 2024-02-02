@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:14:24 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/25 17:32:47 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:19:52 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	if_more_than_one_arg(char *argv[], t_stack **stack_a, int i, int num)
 	while (argv[++i])
 	{
 		str = ft_strjoin(argv[i], " ");
-		str2 = ft_strjoingnl(str2, str);
+		str2 = ft_strjoinps(str2, str);
 		free(str);
 	}
 	if (check_input(str2) != 0)

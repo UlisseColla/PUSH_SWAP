@@ -6,29 +6,30 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:15:21 by aconciar          #+#    #+#             */
-/*   Updated: 2024/01/12 16:38:36 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/02/02 21:14:20 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack **stack, t_stack **node)
+void	pa(t_stack **stack, t_stack **node, int i)
 {
 	t_stack	*tmp_node;
 
 	tmp_node = (*node)->next;
 	ft_list_addfront(stack, *node);
 	*node = tmp_node;
-	ft_printf("pa\n");
+	if (i == 1)
+		ft_printf("pa\n");
 }
 
-void	pb(t_stack **stack, t_stack **node)
+void	pb(t_stack **stack, t_stack **node, int i)
 {
 	t_stack	*tmp_node;
 
 	tmp_node = (*node)->next;
 	ft_list_addfront(stack, *node);
 	*node = tmp_node;
-	ft_printf("pb\n");
+	if (i == 1)
+		ft_printf("pb\n");
 }
-

@@ -6,7 +6,7 @@
 /*   By: aconciar <aconciar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:00:43 by aconciar          #+#    #+#             */
-/*   Updated: 2024/02/01 18:55:38 by aconciar         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:54:38 by aconciar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_print_stack(t_stack *stack)
 {
-	while(stack)
+	while (stack)
 	{
-		ft_printf("%d\n", stack->index);
+		ft_printf("%d\n", stack->chunk);
 		stack = stack->next;
 	}
 }
