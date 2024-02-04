@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:59:54 by ucolla            #+#    #+#             */
-/*   Updated: 2024/01/31 10:49:31 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/04 14:56:41 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_mat(char **mat)
 	free(mat);
 }
 
-static int	is_dup(char **mat, int a, int y)
+int	is_dup(char **mat, int a, int y)
 {
 	int	n1;
 	int	n2;
@@ -35,7 +35,7 @@ static int	is_dup(char **mat, int a, int y)
 	return (n1 - n2);
 }
 
-static int	check_dup(char **mat, int y)
+int	check_dup(char **mat, int y)
 {
 	int	a;
 

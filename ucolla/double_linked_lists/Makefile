@@ -14,6 +14,7 @@ FT_PRINTF:= libftprintf.a
 
 FILES_LIST:= check_efficiency/check_efficiency_no_save \
 				check_efficiency/check_efficiency \
+				check_efficiency/check_efficiency_utils \
 				lib_dll/ft_create_list \
 				lib_dll/ft_create_node \
 				lib_dll/ft_free_list \
@@ -25,22 +26,18 @@ FILES_LIST:= check_efficiency/check_efficiency_no_save \
 				operations/op_rev_rotate \
 				operations/op_rotate \
 				operations/op_swap_and_push \
+				sorting_fts/ft_two_and_four_numbers \
 				sorting_fts/ft_three_numbers \
 				sorting_fts/ft_five_numbers \
-				sorting_fts/circular_list \
-				sorting_fts/circular_list_utils \
-				sorting_fts/lis_utils \
 				sorting_fts/push_b_to_a \
 				sorting_fts/push_a_to_b \
 				sorting_fts/sorting \
-				push_swap_utils \
+				check_input \
 				find_functions \
 				index_stack \
 				initialize_stack \
-				initialize_stack_utils \
-				check_input \
+				push_swap_utils \
 				main \
-#				sorting_fts/create_array \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))
 

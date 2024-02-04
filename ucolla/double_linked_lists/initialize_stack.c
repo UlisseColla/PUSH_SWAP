@@ -6,23 +6,39 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:10:22 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/02 19:37:37 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/04 15:45:20 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	array_size(int *array)
+char	*ft_strjoin_ps(char *s1, char *s2)
 {
-	int	i;
+	char	*ret;
+	size_t	a;
+	size_t	b;
 
-	i = 0;
-	while (array[i] != -1)
-		i++;
-	return (i);
+	ret = (char *)ft_calloc_gnl(ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1,
+			sizeof(char));
+	a = 0;
+	b = 0;
+	while (s1 && s1[a] != '\0')
+	{
+		ret[a] = s1[a];
+		a++;
+	}
+	while (s2 && s2[b] != '\0')
+	{
+		ret[a] = s2[b];
+		a++;
+		b++;
+	}
+	ret[a] = '\0';
+	free(s1);
+	return (ret);
 }
 
-static int	many_parameters(char **argv, t_stack **stack)
+int	many_parameters(char **argv, t_stack **stack)
 {
 	char	*str;
 	char	*str2;
@@ -47,7 +63,7 @@ static int	many_parameters(char **argv, t_stack **stack)
 	return (0);
 }
 
-static int	check_argv(char **argv, int argc, t_stack **stack)
+int	check_argv(char **argv, int argc, t_stack **stack)
 {
 	if (argc == 2)
 	{
@@ -65,102 +81,13 @@ static int	check_argv(char **argv, int argc, t_stack **stack)
 		return (many_parameters(argv, stack));
 }
 
-int **alloc_matrix(int list_size)
-{
-	int	i;
-	int	**matrix;
-
-	i = 0;
-	matrix = (int **)malloc(sizeof(int *) * list_size);
-	if (matrix == NULL)
-	{
-		ft_free_matrix_lis(matrix, list_size);
-		return (NULL);
-	}
-	while (i < list_size)
-	{
-		matrix[i] = NULL;
-		i++;
-	}
-	return (matrix);
-}
-
-int	*find_longest_lis(t_lis **lis, int list_size, int counter, int current_value)
-{
-	int	biggest_length;
-	int	*final_lis;
-	int	**matrix;
-
-	biggest_length = 0;
-	matrix = alloc_matrix(list_size);
-	final_lis = NULL;
-	while (counter < list_size)
-	{
-		matrix[counter] = ft_circular_lis(lis, list_size);
-		biggest_length = array_size(matrix[counter]);
-		if (biggest_length > current_value)
-		{
-			current_value = biggest_length;
-			final_lis = matrix[counter];
-		}
-		*lis = (*lis)->next;
-		counter++;
-	}
-	// ft_free_matrix_lis(matrix, list_size);
-	matrix = NULL;
-	return (final_lis);
-}
-
-/* int	*find_longest_lis_tmp(t_lis **lis, int list_size, int counter, int current_value)
-{
-	int	biggest_length;
-	int	*tmp_lis;
-	int	*final_lis;
-
-	biggest_length = 0;
-	final_lis = NULL;
-	// tmp_lis = NULL;
-	while (counter < list_size)
-	{
-		tmp_lis = ft_circular_lis(lis, list_size);
-		biggest_length = array_size(tmp_lis);
-		if (biggest_length > current_value)
-		{
-			current_value = biggest_length;
-			final_lis = tmp_lis;
-		}
-		else
-			free(tmp_lis);
-		tmp_lis = NULL;
-		*lis = (*lis)->next;
-		counter++;
-	}
-	return (final_lis);
-} */
-
 int	initialize_stack(t_stack **stack, char **argv, int argc)
 {
-	t_lis	*lis;
-	int		*lis_path;
-	int		list_size;
-	int		head_lis;
-
-	lis = NULL;
 	if (check_argv(argv, argc, stack) == 1)
 	{
 		ft_putstr_fd("Wrong set of parameters\n", 2);
 		return (1);
 	}
-	list_size = ft_list_size(stack);
-	index_stack_init(stack);
-	if (list_size > 5)
-	{
-		lis = index_lis_init(stack, list_size);
-		head_lis = lis->index;
-		lis_path = find_longest_lis(&lis, list_size, 0, 0);
-		index_push_init(*stack, lis_path);
-		ft_free_lis(lis, head_lis);
-		free(lis_path);
-	}
+	index_stack_init(stack, 1, 1);
 	return (0);
 }

@@ -6,29 +6,18 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:26:07 by aconciar          #+#    #+#             */
-/*   Updated: 2024/02/01 16:10:56 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/04 15:54:37 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ra_rra_counter_a_no_save(t_stack *stack_a, int index, t_operator *operator)
+int	moves_counter_no_save(int moves, t_stack *stack_a, int index)
 {
-	int	moves;
-	int stack_size;
-
-	stack_size = ft_list_size(&stack_a);
-	moves = 0;
-	if ((index > find_biggest(stack_a) && find_biggest(stack_a) == ft_list_last(stack_a)->index) 
-		|| (index < find_smallest(stack_a) && find_smallest(stack_a) == stack_a->index))
-	{
-		operator->rra = 0;
-		operator->ra = 0;
-		return ;
-	}
 	if (index > find_biggest(stack_a))
 	{
-		while (stack_a->next && stack_a->index != find_biggest_before_index(stack_a, index))
+		while (stack_a->next && stack_a->index
+			!= find_biggest_before_index(stack_a, index))
 		{
 			moves++;
 			stack_a = stack_a->next;
@@ -41,23 +30,40 @@ void	ra_rra_counter_a_no_save(t_stack *stack_a, int index, t_operator *operator)
 	}
 	else
 	{
-		while (stack_a->next && stack_a->index != find_smallest_after_index(stack_a, index))
+		while (stack_a->next && stack_a->index
+			!= find_smallest_after_index(stack_a, index))
 		{
 			moves++;
 			stack_a = stack_a->next;
 		}
 	}
-	operator->rra = stack_size - moves;
-	// ft_printf("operator->rra : %d\n", operator->rra);
-	operator->ra = moves;
-	// ft_printf("operator->ra : %d\n", operator->ra);
+	return (moves);
 }
 
-
-void	rb_rrb_counter_b_no_save(t_stack *stack_b, int index, t_operator *operator)
+void	counter_a(t_stack *stack_a, int index, t_operator *operator)
 {
 	int	moves;
-	int stack_size;
+	int	stack_size;
+
+	stack_size = ft_list_size(&stack_a);
+	if ((index > find_biggest(stack_a)
+			&& find_biggest(stack_a) == ft_list_last(stack_a)->index)
+		|| (index < find_smallest(stack_a)
+			&& find_smallest(stack_a) == stack_a->index))
+	{
+		operator->rra = 0;
+		operator->ra = 0;
+		return ;
+	}
+	moves = moves_counter_no_save(0, stack_a, index);
+	operator->rra = stack_size - moves;
+	operator->ra = moves;
+}
+
+void	counter_b(t_stack *stack_b, int index, t_operator *operator)
+{
+	int	moves;
+	int	stack_size;
 
 	stack_size = ft_list_size(&stack_b);
 	moves = 0;
@@ -73,50 +79,50 @@ void	rb_rrb_counter_b_no_save(t_stack *stack_b, int index, t_operator *operator)
 		stack_b = stack_b->next;
 	}
 	operator->rrb = stack_size - moves;
-	// ft_printf("operator->rrb : %d\n", operator->rrb);
 	operator->rb = moves;
-	// ft_printf("operator->rb : %d\n", operator->rb);
 }
 
-int	efficiency_counter_no_save(t_stack *stack_a, t_stack *stack_b, int index)
+void	check_operator_rr_rrr(t_operator *operator)
 {
-	int	r_moves;
-	int	rr_moves;
+	if (operator->ra < operator->rb)
+	{
+		operator->rr = operator->ra;
+		operator->rb -= operator->ra;
+		operator->ra = 0;
+	}
+	else
+	{
+		operator->rr = operator->rb;
+		operator->ra -= operator->rb;
+		operator->rb = 0;
+	}
+	if (operator->rra < operator->rrb)
+	{
+		operator->rrr = operator->rra;
+		operator->rrb -= operator->rra;
+		operator->rra = 0;
+	}
+	else
+	{
+		operator->rrr = operator->rrb;
+		operator->rra -= operator->rrb;
+		operator->rrb = 0;
+	}
+}
+
+int	eff_counter_no_save(t_stack *stack_a, t_stack *stack_b, int index)
+{
+	int			r_moves;
+	int			rr_moves;
 	t_operator	operator;
 
 	r_moves = 0;
 	rr_moves = 0;
-	// ft_printf("index : %d\n", index);
-	rb_rrb_counter_b_no_save(stack_b, index, &operator);
-	ra_rra_counter_a_no_save(stack_a, index, &operator);
-	if (operator.ra < operator.rb)
-	{
-		operator.rr = operator.ra;
-		operator.rb -= operator.ra;
-		operator.ra = 0;
-	}
-	else
-	{
-		operator.rr = operator.rb;
-		operator.ra -= operator.rb;
-		operator.rb = 0;
-	}
-	if (operator.rra < operator.rrb)
-	{
-		operator.rrr = operator.rra;
-		operator.rrb -= operator.rra;
-		operator.rra = 0;
-	}
-	else
-	{
-		operator.rrr = operator.rrb;
-		operator.rra -= operator.rrb;
-		operator.rrb = 0;
-	}
+	counter_b(stack_b, index, &operator);
+	counter_a(stack_a, index, &operator);
+	check_operator_rr_rrr(&operator);
 	r_moves += operator.ra + operator.rb + operator.rr;
 	rr_moves += operator.rra + operator.rrb + operator.rrr;
-	// ft_printf("r_moves : %d\n", r_moves);	
-	// ft_printf("rr_moves : %d\n",rr_moves);
 	if (r_moves < rr_moves)
 	{
 		operator.rra = 0;

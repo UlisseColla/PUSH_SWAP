@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:04:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/01 18:42:25 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/04 15:55:05 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ void	sb(t_stack **stack)
 	*stack = node;
 	write(1, "sb\n", 3);
 }
-
-/* void	ss(t_stack **stack_a, t_stack **stack_b)
-{
-	sa(stack_a);
-	sb(stack_b);
-	write(1, "ss\n", 3);
-} */
 
 void	pa(t_stack **stack, t_stack **node)
 {

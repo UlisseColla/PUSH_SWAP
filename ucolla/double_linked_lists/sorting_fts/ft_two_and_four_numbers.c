@@ -1,65 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_five_numbers.c                                  :+:      :+:    :+:   */
+/*   ft_two_and_four_numbers.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 17:33:56 by aconciar          #+#    #+#             */
-/*   Updated: 2024/02/04 16:00:31 by ucolla           ###   ########.fr       */
+/*   Created: 2024/02/04 14:58:46 by ucolla            #+#    #+#             */
+/*   Updated: 2024/02/04 16:00:07 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	find_biggest_index(t_stack *stack)
+void	ft_two_numbers(t_stack **stack_a)
 {
-	int		max_value;
+	if ((*stack_a)->index > (*stack_a)->next->index)
+		sa(stack_a);
+}
+
+int	ft_find_smallest(t_stack *stack)
+{
+	int		min_value;
 	int		current_value;
 	t_stack	*tmp;
 
-	max_value = INT_MIN;
+	min_value = INT_MAX;
 	tmp = stack;
 	while (tmp)
 	{
-		current_value = tmp->index;
-		if (current_value > max_value)
-			max_value = current_value;
+		current_value = tmp->value;
+		if (current_value < min_value)
+			min_value = current_value;
 		tmp = tmp->next;
 	}
-	return (max_value);
+	return (min_value);
 }
 
-void	push_biggest(t_stack **stack_a, t_stack **stack_b, int value)
+void	push_smallest(t_stack **stack_a, t_stack **stack_b)
 {
 	int		i;
 	t_stack	*a;
+	t_stack	*b;
 
 	i = 0;
 	a = *stack_a;
 	while (a)
 	{
-		if (a->index == value)
+		b = *stack_a;
+		if (a->value == ft_find_smallest(b))
 			break ;
 		a = a->next;
 		i++;
 	}
 	if (i <= ft_list_size(stack_a) / 2)
+	{
 		while (--i >= 0)
 			ra(stack_a, 1);
+	}
 	else
+	{
 		while (++i <= ft_list_size(stack_a))
 			rra(stack_a, 1);
+	}
 	pb(stack_b, stack_a);
 }
 
-void	ft_five_numbers(t_stack **stack_a, t_stack **stack_b)
+void	ft_four_numbers(t_stack **stack_a, t_stack **stack_b)
 {
-	push_biggest(stack_a, stack_b, find_biggest_index(*stack_a) - 1);
-	push_biggest(stack_a, stack_b, find_biggest_index(*stack_a));
+	push_smallest(stack_a, stack_b);
 	ft_three_numbers(stack_a);
 	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
-	ra(stack_a, 1);
-	ra(stack_a, 1);
 }

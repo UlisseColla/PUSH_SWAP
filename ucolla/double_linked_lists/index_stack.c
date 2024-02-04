@@ -6,13 +6,13 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:26:15 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/02 16:09:00 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/04 15:45:27 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	index_find_smallest(t_stack **stack)
+int	index_find_smallest(t_stack **stack)
 {
 	int		min_value;
 	int		current_value;
@@ -30,47 +30,27 @@ static int	index_find_smallest(t_stack **stack)
 	return (min_value);
 }
 
-void	index_stack_init(t_stack **stack)
+void	index_stack_init(t_stack **stack, int i, int c)
 {
-	int		i;
-	int		j;
-	int		c;
+	int		tmp;
+	int		list_size;
 	int		smallest;
 	t_stack	*b;
 
-	i = 1;
-	j = ft_list_size(stack);
+	list_size = ft_list_size(stack);
 	b = *stack;
-	c = 1;
-	while (i <= j)
+	while (i <= list_size)
 	{
 		smallest = index_find_smallest(&b);
 		ft_list_find_node(b, smallest)->index = i;
 		ft_list_find_node(b, smallest)->has_index = true;
 		ft_list_find_node(b, smallest)->chunk = c;
-		if (i == ft_list_size(stack) / 2)
-			c++;
-		i++;
-	}
-}
-
-void	index_push_init(t_stack *stack, int *lis)
-{
-	t_stack	*tmp;
-	int		i;
-
-	tmp = stack;
-	i = 0;
-	while (tmp)
-	{
-		i = 0;
-		tmp->push = 0;
-		while (lis[i] != -1)
+		if (tmp == list_size / 4)
 		{
-			if (lis[i] == tmp->index)
-				tmp->push = 1;
-			i++;
+			c++;
+			tmp = 0;
 		}
-		tmp = tmp->next;
+		i++;
+		tmp++;
 	}
 }
